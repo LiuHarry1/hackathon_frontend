@@ -1,3 +1,3 @@
 # Introduction
 
-Learning Magagement System
+Learning Management System
