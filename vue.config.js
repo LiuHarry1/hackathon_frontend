@@ -19,10 +19,6 @@ module.exports = {
     //     changeOrigin: true,
     //   },
     // },
-    devServer: {
-      // allowedHosts: "all",
-      disableHostCheck: true,
-    },
   },
   pluginOptions: {
     'style-resources-loader': {
