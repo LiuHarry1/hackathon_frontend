@@ -51,6 +51,7 @@ export default {
      */
     matcher: {
       type: Function,
+      
       default: noop,
     },
     /**

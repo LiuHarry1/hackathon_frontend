@@ -11,7 +11,7 @@
   >
     <template #menuHeaderRender>
       <a-avatar src="/logo.png" :size="40" />
-      <h1>竞赛管理系统</h1>
+      <h1>LMS</h1>
     </template>
     <template #rightContentRender>
       <div :class="rightContentClass">
@@ -20,7 +20,7 @@
     </template>
     <template #footerRender>
       <div class="footer-container">
-        南昌大学 软件学院 竞赛管理系统 ©2021 Created by Qinxuyang
+        Hackathon
       </div>
     </template>
     <template #headerContentRender>

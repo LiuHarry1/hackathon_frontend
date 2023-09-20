@@ -15,7 +15,7 @@ function matcher(name) {
         const label = formOption?.label;
         ctx.data.attrs = Object.assign({
           allowClear: true,
-          placeholder: isString(label) ? getPlaceholder('请输入', label) : '',
+          placeholder: isString(label) ? getPlaceholder('Input ', label) : '',
         }, attrs);
 
         const { pressEnter, input } = on;

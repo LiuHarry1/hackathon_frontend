@@ -2,7 +2,7 @@
   <div class="login-form">
     <div class="title">
       <a-avatar src="/logo.png" :size="40" />
-      <span>竞赛管理系统</span>
+      <span>Learning Management System</span>
     </div>
     <a-form-model
       layout="vertical"
@@ -43,8 +43,8 @@
       </a-form-model-item>
       <a-form-model-item prop="identity">
         <a-radio-group v-model="formData.identity" class="identity">
-          <a-radio value="student">学生</a-radio>
-          <a-radio value="teacher">教师</a-radio>
+          <a-radio value="student">Student</a-radio>
+          <a-radio value="teacher">Teacher</a-radio>
         </a-radio-group>
       </a-form-model-item>
       <a-button

@@ -14,7 +14,7 @@ export const routes = [
   {
     path: '/',
     name: 'Home',
-    meta: { title: '主页' },
+    meta: { title: 'Home' },
     redirect: '/race/list',
     component: GlobalLayout,
     children: [
@@ -23,19 +23,19 @@ export const routes = [
         name: 'Race',
         redirect: '/race/list',
         component: RouteView,
-        meta: { title: '赛事管理', icon: 'appstore' },
+        meta: { title: 'Module Management', icon: 'appstore' },
         children: [
           {
             path: '/race/list',
             name: 'RaceList',
             component: () => import('@/pages/race/Race'),
-            meta: { title: '赛事列表', auth: 'race:query' },
+            meta: { title: 'Module List', auth: 'race:query' },
           },
           {
             path: '/race/record',
             name: 'Record',
             component: () => import('@/pages/race/Record'),
-            meta: { title: '参赛记录', auth: 'record:query' },
+            meta: { title: 'My Modules', auth: 'record:query' },
           },
         ],
       },
@@ -44,19 +44,19 @@ export const routes = [
         redirect: '/user/student',
         name: 'User',
         component: RouteView,
-        meta: { title: '用户管理', icon: 'user', auth: 'user:query' },
+        meta: { title: 'User Management', icon: 'user', auth: 'user:query' },
         children: [
           {
             path: '/user/student',
             name: 'Student',
             component: () => import('@/pages/user/Student'),
-            meta: { title: '学生列表' },
+            meta: { title: 'Student List' },
           },
           {
             path: '/user/teacher',
             name: 'Teacher',
             component: () => import('@/pages/user/Teacher'),
-            meta: { title: '教师列表' },
+            meta: { title: 'Teacher List' },
           },
         ],
       },
@@ -65,18 +65,18 @@ export const routes = [
         redirect: '/role/list',
         name: 'Role',
         component: RouteView,
-        meta: { title: '权限管理', icon: 'key' },
+        meta: { title: 'Permission Management', icon: 'key' },
         children: [
           {
             path: '/role/list',
             name: 'RoleList',
-            meta: { title: '角色列表', auth: 'role:query' },
+            meta: { title: 'Role List', auth: 'role:query' },
             component: () => import('@/pages/role/RoleList'),
           },
           {
             path: '/role/permission',
             name: 'Permission',
-            meta: { title: '权限列表', auth: 'permission:query' },
+            meta: { title: 'Permission List', auth: 'permission:query' },
             component: () => import('@/pages/role/PermissionList'),
           },
         ],

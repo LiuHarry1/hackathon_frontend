@@ -1,3 +1,4 @@
+<!-- 使用 Pug 模板语言编写的搜索表单，具体功能在ConfigForm组件中实现 -->
 <template lang="pug">
 .search-form-container
   .form
@@ -8,8 +9,8 @@
       @change="$emit('change', $event)"
     )
   .operate-button-group
-    a-button(type="primary", :loading="loading", @click="search") 查询
-    a-button(type="link", @click="reset") 重置
+    a-button(type="primary", :loading="loading", @click="search") Search
+    a-button(type="link", @click="reset") Reset
 </template>
 
 <script>

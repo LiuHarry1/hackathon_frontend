@@ -12,7 +12,7 @@ const store = new Vuex.Store({
   state: {
     user: {
       account: 'admin',
-      permissions: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      permissions: Array.from({ length: 28 }, (_, index) => index + 1),
     },
   },
   getters: {
@@ -47,5 +47,6 @@ export default store;
  * @returns {boolean}
  */
 Vue.prototype.$has = function(permission) {
+  // 检查 store.getters.permissions 数组中是否存在与 permission 相等的任何一个元素(即拥有权限）。
   return store.getters.permissions.some(v => v === permission);
 };

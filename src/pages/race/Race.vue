@@ -21,24 +21,25 @@
       <template #header>
         <a-button-group>
           <a-button v-if="$has('race:add')" type="primary" @click="addRace">
-            添加赛事
+            Add Module
           </a-button>
           <a-button
             v-if="$has('race:delete')"
             :disabled="!selectedKeys.length"
             @click="batchDelete"
           >
-            批量删除 ({{ selectedKeys.length }})
+            Delete ({{ selectedKeys.length }})
           </a-button>
           <a-button
             v-if="$has('race:export')"
             :loading="exporting"
             @click="exportAll"
           >
-            全量导出
+            Export
           </a-button>
         </a-button-group>
       </template>
+      <!-- action 插槽用于渲染每一行记录的操作按钮 -->
       <template #action="record">
         <a-space>
           <!-- 成绩录入 -->
@@ -56,7 +57,7 @@
           <!--删除-->
           <a-popconfirm
             v-if="$has('race:delete')"
-            title="确认删除？"
+            title="Confirm Delete？"
             placement="left"
             @confirm="deleteRace(record)"
           >
@@ -80,14 +81,22 @@ import AddRecord from '@/components/record/AddRecord';
 export default {
   name: 'Race',
   metaInfo: {
-    title: '赛事管理',
+    title: 'Course Management',
   },
   data() {
     return {
       selectedKeys: [],
       loading: false,
       exporting: false,
-      races: [],
+      races: [
+        {
+          id:0,
+          title:'module1',
+          progress:20,
+          startdate:'2023/09/20',
+          enddate:'2023/09/21',
+        }
+      ],
       current: 1,
       pageSize: 10,
       total: 0,
@@ -124,12 +133,13 @@ export default {
         ...this.$refs.searchForm.getResult(),
         offset: this.current,
         limit: this.pageSize,
+
       }).then(data => {
         this.races = data.data;
         this.total = data.count;
       }).catch(e => {
         console.error(e);
-        this.$message.error(e.msg || '获取数据失败');
+        this.$message.error(e.msg || 'Failed to read data');
       }).finally(() => {
         this.loading = false;
       });
@@ -137,7 +147,7 @@ export default {
     addRace() {
       let vnode;
       this.$confirm({
-        title: '新增赛事',
+        title: 'Add Module',
         content: h => (vnode = <EditRace />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -145,7 +155,7 @@ export default {
             this.$message.success(data.msg);
             this.getData();
           }).catch(e => {
-            this.$message.error(e.msg || '添加失败');
+            this.$message.error(e.msg || 'Failed Add');
             throw e;
           });
         },
@@ -154,7 +164,7 @@ export default {
     editRace(race) {
       let vnode;
       this.$confirm({
-        title: '编辑赛事',
+        title: 'Edit Module',
         content: h => (vnode = <EditRace data={race} />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -163,7 +173,7 @@ export default {
             this.$message.success(data.msg);
             this.getData();
           }).catch(e => {
-            this.$message.error(e.msg || '修改失败');
+            this.$message.error(e.msg || 'Failed Edit');
             throw e;
           });
         },
@@ -233,15 +243,13 @@ export default {
 
 function createTableColumns() {
   return [
-    { title: '赛事名称', dataIndex: 'title' },
-    { title: '级别', customRender: record => raceLevelMap[record.level] },
-    { title: '类别', dataIndex: 'type' },
-    { title: '主办方', dataIndex: 'sponsor' },
-    { title: '举办时间', dataIndex: 'date' },
-    { title: '地点', dataIndex: 'location' },
-    { title: '描述', dataIndex: 'description' },
+    { title: 'Module ID', dataIndex: 'id' },
+    { title: 'Module Name', dataIndex: 'title' },
+    { title: 'Progress(%)', dataIndex: 'progress' },
+    { title: 'Start Date', dataIndex: 'startdate' },
+    { title: 'End Date', dataIndex: 'enddate' },
     {
-      title: '操作',
+      title: 'Options',
       align: 'center',
       scopedSlots: {
         customRender: 'action',
@@ -274,46 +282,46 @@ function exportExcel(data) {
 function createSearchOptions() {
   return [
     {
-      label: '赛事名称',
+      label: 'Module Name',
       key: 'title',
       default: '',
       component: 'input',
     },
+    // {
+    //   label: '主办方',
+    //   key: 'sponsor',
+    //   default: '',
+    //   component: 'input',
+    // },
+    // {
+    //   label: '地点',
+    //   key: 'location',
+    //   default: '',
+    //   component: 'input',
+    // },
+    // {
+    //   label: '类别',
+    //   key: 'type',
+    //   default: undefined,
+    //   component: 'select',
+    //   props: {
+    //     options: ['A', 'B', 'C', 'D', 'E', 'F'].map(key => ({
+    //       label: key,
+    //       value: key,
+    //     })),
+    //   },
+    // },
+    // {
+    //   label: '级别',
+    //   key: 'level',
+    //   default: undefined,
+    //   component: 'select',
+    //   props: {
+    //     options: raceLevels,
+    //   },
+    // },
     {
-      label: '主办方',
-      key: 'sponsor',
-      default: '',
-      component: 'input',
-    },
-    {
-      label: '地点',
-      key: 'location',
-      default: '',
-      component: 'input',
-    },
-    {
-      label: '类别',
-      key: 'type',
-      default: undefined,
-      component: 'select',
-      props: {
-        options: ['A', 'B', 'C', 'D', 'E', 'F'].map(key => ({
-          label: key,
-          value: key,
-        })),
-      },
-    },
-    {
-      label: '级别',
-      key: 'level',
-      default: undefined,
-      component: 'select',
-      props: {
-        options: raceLevels,
-      },
-    },
-    {
-      label: '举办时间',
+      label: 'Module Date',
       key: 'date',
       default: () => [],
       mapper: ({ date }) => date.join('~'),
