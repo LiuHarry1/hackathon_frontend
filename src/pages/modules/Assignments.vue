@@ -76,7 +76,8 @@ export default {
       // Handle the server response and populate the data in the component
       // Use Axios or similar library to make the API call
       axios
-        .get('http://localhost:8081/grades')
+        // .get('http://localhost:8081/grades')
+        .get('https://vmg65etpjy.us-east-1.awsapprunner.com/grades')
         .then((response) => {
           this.grades = response.data.grades;
           this.showGrades = true;
@@ -90,7 +91,8 @@ export default {
       // Handle the server response and populate the data in the component
       // Use Axios or similar library to make the API call
       axios
-        .get('http://localhost:8081/comments')
+        // .get('http://localhost:8081/comments')
+        .get('https://vmg65etpjy.us-east-1.awsapprunner.com/comments')
         .then((response) => {
           this.comments = response.data.comments;
           this.showComments = true;
@@ -115,7 +117,8 @@ export default {
 
       // Send a POST request to the server's upload endpoint
       axios
-        .post('http://localhost:8081/upload', formData)
+        // .post('http://localhost:8081/upload', formData)
+        .post('https://vmg65etpjy.us-east-1.awsapprunner.com/upload', formData)
         .then((response) => {
           // Handle the server response (e.g., display a success message)
           this.uploadMessage = response.data.message;
@@ -128,7 +131,8 @@ export default {
     },
     downloadFile() {
       // Replace 'your-backend-url' with the actual URL of your Flask backend
-      const downloadUrl = 'http://localhost:8081/download/quiz_assignment.txt';
+      // const downloadUrl = 'http://localhost:8081/download/quiz_assignment.txt';
+      const downloadUrl = 'https://vmg65etpjy.us-east-1.awsapprunner.com/download/quiz_assignment.txt';
 
       // Use Axios to request and trigger the file download
       axios
