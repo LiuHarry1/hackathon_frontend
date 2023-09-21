@@ -37,6 +37,7 @@
 
 <script>
 import axios from 'axios';
+import { BASE_URL } from '../../config';
 
 export default {
   data() {
@@ -61,7 +62,7 @@ export default {
   methods: {
     fetchModuleInformation() {
       // Replace 'http://localhost:5000' with your actual backend API URL
-      axios.get(`http://localhost:8081/api/modules/${this.moduleId}`)
+      axios.get(`${BASE_URL}/api/modules/${this.moduleId}`)
         .then((response) => {
           this.moduleData = response.data;
         })
