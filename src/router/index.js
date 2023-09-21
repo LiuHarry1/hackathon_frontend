@@ -130,6 +130,12 @@ export const routes = [
     component: () => import('@/pages/Login'),
   },
   {
+    path: '/register',
+    name: 'Register',
+    meta: { title: 'Register' },
+    component: () => import('@/pages/Register'),
+  },
+  {
     path: '/404',
     component: () => import('@/components/common/404'),
   },

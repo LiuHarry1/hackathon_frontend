@@ -2,7 +2,7 @@
   <div class="login-form">
     <div class="title">
       <a-avatar src="/logo.png" :size="40" />
-      <span style="font-size: 15px;">Learning Management System</span>
+      <span style="font-size: 18px;">Register</span>
     </div>
     <a-form-model
       layout="vertical"
@@ -12,7 +12,7 @@
       @submit="onSubmit"
     >
       <a-form-model-item ref="account" prop="account">
-        <a-input v-model="formData.account" placeholder="学号/工号">
+        <a-input v-model="formData.account" placeholder="Account">
           <a-icon
             slot="prefix"
             type="user"
@@ -21,7 +21,7 @@
         </a-input>
       </a-form-model-item>
       <a-form-model-item ref="password" prop="password">
-        <a-input-password v-model="formData.password" placeholder="密码">
+        <a-input-password v-model="formData.password" placeholder="Password">
           <a-icon
             slot="prefix"
             type="lock"
@@ -29,7 +29,15 @@
           />
         </a-input-password>
       </a-form-model-item>
-      <a-form-model-item ref="code" prop="code">
+      <a-form-model-item ref="email" prop="email">
+      <a-input v-model="formData.email" placeholder="Email">
+        <a-icon
+            slot="prefix"
+            type="mail"
+            style="color: rgba(0, 0, 0, 0.25)"
+          /></a-input>
+        </a-form-model-item>
+      <!-- <a-form-model-item ref="code" prop="code">
         <div class="code-input">
           <a-input v-model="formData.code" placeholder="验证码">
             <a-icon
@@ -40,7 +48,7 @@
           </a-input>
           <div class="code" v-html="svg" @click="getCode" />
         </div>
-      </a-form-model-item>
+      </a-form-model-item> -->
       <a-form-model-item prop="identity">
         <a-radio-group v-model="formData.identity" class="identity">
           <a-radio value="student">Student</a-radio>
@@ -54,15 +62,15 @@
         :loading="loading"
         block
       >
-        Login
+        Register
       </a-button>
       <a-button
-        @click="goToRegister"
+        @click="goToLogin"
         class="register-button"
         :loading="loading"
         block
       >
-        Register
+        Have Account?
       </a-button>
     </a-form-model>
   </div>
@@ -72,7 +80,7 @@
 <script>
 import Cookie from 'js-cookie';
 export default {
-  name: 'Login',
+  name: 'Register',
   data() {
     return {
       loading: false,
@@ -80,7 +88,7 @@ export default {
       formData: {
         account: '',
         password: '',
-        code: '',
+        email:'',
         identity: 'student',
       },
       rules: {
@@ -91,25 +99,16 @@ export default {
     };
   },
   mounted() {
-    this.getCode();
   },
   methods: {
-    getCode() {
-      // this.formData.code = '';
-      // this.$api.getAuthCode().then(data => {
-      //   this.svg = data.data;
-      // }).catch(e => {
-      //   this.$message.error(e.msg || '验证码获取失败');
-      // });
-    },
     onSubmit(e) {
       e.preventDefault();
       this.loading = true;
       // await this.$refs.form.validate();
       // await this.$api.login(this.formData);
-      Cookie.set('uid', 'testuser');
-      this.$router.replace({ path: '/' });
-      this.$message.success(`${timeFix()}，欢迎回来`);
+      // Cookie.set('uid', 'testuser');
+      this.$router.replace({ path: '/login' });
+      this.$message.success(`${timeFix()}，注册成功`);
     },
     // #region onsubmit
     // async onSubmit(e) {
@@ -137,9 +136,8 @@ export default {
     //   }
     // },
     // #endregion
-    goToRegister(){
-      console.log('register');
-      this.$router.replace({ path: '/register' });
+    goToLogin(){
+      this.$router.replace({ path: '/login' });
     }
   },
 };

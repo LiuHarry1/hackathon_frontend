@@ -53,6 +53,7 @@
             <article-comment :easy="false" :comment="comment" @edit="onCommentEdit" @replay="onCommentReply" @del="onCommentDel"></article-comment>
             <el-divider></el-divider>
           </div>
+          <!-- 回复文章正文 -->
           <article-comment-add ref="articleCommentAdd" @submit="onCommentReply({content: $event,commentId: 0})"></article-comment-add>
         </el-card>
       </template>

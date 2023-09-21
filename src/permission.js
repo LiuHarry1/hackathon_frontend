@@ -9,7 +9,7 @@ NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
 const loginPath = '/login';
 const defaultRoutePath = '/race/list';
-const whiteList = ['Login'];
+const whiteList = ['Login','Register'];
 
 // 注册了一个全局路由前置守卫
 router.beforeEach(async (to, from, next) => {

@@ -47,6 +47,7 @@
       <template v-if="startReplay">
         <article-comment-add noFace @submit="onReplay({content: $event,commentId: comment.articleCommentId})" @cancel="startReplay = false"></article-comment-add>
       </template>
+      <!-- 多层评论 -->
       <template v-if="comment.sonArticleComments && comment.sonArticleComments.length > 0">
         <el-divider class="mini"></el-divider>
         <div class="son-article-comments" v-for="(sonComment,index) in comment.sonArticleComments" :key="sonComment.articleCommentId">

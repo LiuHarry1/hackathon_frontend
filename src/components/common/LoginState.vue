@@ -12,16 +12,16 @@
       </a-menu-item>
       <a-menu-item @click="modifySelfInfo">
         <a-icon type="user" />
-        <span>个人信息</span>
+        <span>SelfInfo</span>
       </a-menu-item>
       <a-menu-item @click="modifyPassword">
         <a-icon type="lock" />
-        <span>修改密码</span>
+        <span>ModifyPassword</span>
       </a-menu-item>
       <a-menu-divider />
       <a-menu-item @click="logout">
         <a-icon type="poweroff" />
-        <span>退出登录</span>
+        <span>Log Out</span>
       </a-menu-item>
     </a-menu>
   </a-dropdown>
@@ -47,7 +47,7 @@ export default {
     modifyPassword() {
       let vnode;
       this.$drawer({
-        title: '修改密码',
+        title: 'modifyPassword',
         content: h => (vnode = <UpdatePassword />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -57,10 +57,10 @@ export default {
             oldVal: values.oldVal,
             newVal: values.newVal,
           }).then(() => {
-            this.$message.success('修改成功');
+            this.$message.success('Modify successfully');
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '修改失败');
+            this.$message.error(e.msg || 'Fail to modify');
             throw e;
           });
         },
@@ -69,7 +69,7 @@ export default {
     modifySelfInfo() {
       let vnode;
       this.$drawer({
-        title: '修改个人信息',
+        title: 'modify SelfInfo',
         content: h => (vnode = this.user.identity === 'student'
           ? <EditStudent type="update" data={this.user} />
           : <EditTeacher type="update" data={this.user} />),
@@ -79,11 +79,11 @@ export default {
             this.user.identity,
             values,
           ).then(() => {
-            this.$message.success('修改成功');
+            this.$message.success('Modify successfully');
             this.$store.dispatch('initUser');
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '修改失败');
+            this.$message.error(e.msg || 'Fail to modify');
             throw e;
           });
         },
