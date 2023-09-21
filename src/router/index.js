@@ -37,6 +37,12 @@ export const routes = [
             component: () => import('@/pages/race/Record'),
             meta: { title: 'My Modules', auth: 'record:query' },
           },
+          {
+            path: '/race/assignment',
+            name: 'assignment',
+            component: () => import('@/pages/modules/Assignments.vue'),
+            meta: { title: 'Lesson Assignment', auth: 'record:query' },
+          },
         ],
       },
       {
