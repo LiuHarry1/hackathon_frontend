@@ -11,7 +11,7 @@
   >
     <template #menuHeaderRender>
       <a-avatar src="/logo.png" :size="40" />
-      <h1>LMS</h1>
+      <h1 style="font-size: 15px;">Learning Management</h1>
     </template>
     <template #rightContentRender>
       <div :class="rightContentClass">

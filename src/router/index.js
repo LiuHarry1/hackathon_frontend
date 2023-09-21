@@ -18,6 +18,7 @@ export const routes = [
     redirect: '/race/list',
     component: GlobalLayout,
     children: [
+      // module(race)
       {
         path: '/race',
         name: 'Race',
@@ -39,6 +40,7 @@ export const routes = [
           },
         ],
       },
+      // user
       {
         path: '/user',
         redirect: '/user/student',
@@ -60,6 +62,30 @@ export const routes = [
           },
         ],
       },
+      // forum 
+      {
+        path: '/forum',
+        redirect: '/forum/index',
+        name: 'Forum',
+        component: RouteView,
+        meta: { title: 'Learning Forum', icon: 'user'},
+        children: [
+          {
+            path: '/forum/index',
+            name: 'ForumIndex',
+            component: () => import('@/pages/forum/ForumIndex.vue'),
+            meta: { title: 'Learning Forum' },
+          },
+          // 文章
+          {
+            path: '/forum/article/:articleId',
+            name: 'Article',
+            component: () => import('@/pages/forum/Article.vue'),
+            meta: { title: 'Article',auth:'article' },
+          },
+        ],
+      },
+      // role
       {
         path: '/role',
         redirect: '/role/list',
@@ -83,6 +109,8 @@ export const routes = [
       },
     ],
   },
+  
+
   {
     path: '/login',
     name: 'Login',
@@ -117,6 +145,11 @@ export function filterRoutes(routes, permission) {
     const arr = [];
     for (const route of routes) {
       const auth = route.meta?.auth;
+      // 暂时隐藏文章
+      if(auth ==='article'){
+        route.hidden =true;
+      }
+      // 
       if (!auth || set.has(auth)) {
         arr.push(route);
         if (route.children) {

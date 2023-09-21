@@ -59,7 +59,7 @@ export default {
         pagination: {
           showQuickJumper: true,
           showSizeChanger: true,
-          showTotal: total => `共 ${total} 条记录`,
+          showTotal: total => `Total ${total}`,
         },
       }, this.$attrs),
     };

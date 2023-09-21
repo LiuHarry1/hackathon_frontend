@@ -8,9 +8,12 @@ import 'ant-design-vue/dist/antd.less';
 import 'animate.css';
 import '@/style/reset.styl';
 import './form';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(VueMeta);
 Vue.use(AntDesign);
+Vue.use(ElementUI);
 
 // a-table的拓展table
 Vue.component(AntTable.name, AntTable);

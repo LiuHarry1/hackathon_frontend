@@ -31,7 +31,7 @@ export default {
     },
   },
   metaInfo: {
-    title: '首页',
+    title: 'Index',
     titleTemplate: '%s | Learning Management System',
     meta: [
       {
