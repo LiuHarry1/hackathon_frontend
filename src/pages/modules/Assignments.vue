@@ -16,15 +16,15 @@
         </div>
         <div v-if="$has('ai:teacher')">
         <!-- Text input for quiz question and Generate Quiz button -->
-        <input class='inputclass' type="text" v-model="quizQuestion" placeholder="Enter a quiz question" />
+        <input class='inputclass' type="text" v-model="quizQuestion" placeholder="Enter keywords of quiz" />
         <div>
-          <button @click="generateQuiz">Generate Quiz</button>
+          <button @click="generateQuiz">AI Generate Quiz</button>
         </div>
 
 
         <!-- Display the generated quiz -->
         <div v-if="generatedQuiz">
-          <h3>Generated Quiz</h3>
+          <h3>AI Generated Quiz</h3>
           <p>{{ generatedQuiz }}</p>
         </div>
         </div>
@@ -49,16 +49,7 @@
       </div>
       <div class="button_layer1">
         <div>
-          <button @click="fetchGrades">Grades</button>
-        </div>
-        <div v-if="showGrades">
-          <!-- Display grades here -->
-          <p v-if="grades">Grades: {{ grades }}</p>
-        </div>
-      </div>
-      <div class="button_layer1">
-        <div>
-          <button @click="fetchComments">Comments</button>
+          <button @click="fetchComments">AI Review</button>
         </div>
         <div v-if="showComments">
           <!-- Display comments here -->
