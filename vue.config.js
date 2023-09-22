@@ -21,7 +21,7 @@ module.exports = {
     },
     // allowedHosts: "all",
     compress: true,
-    disableHostCheck: true,   // That solved it
+    disableHostCheck: true,
   },
   pluginOptions: {
     'style-resources-loader': {

@@ -50,6 +50,12 @@ export const routes = [
             component: () => import('@/pages/modules/Assignments.vue'),
             meta: { title: 'Lesson Assignment', auth: 'record:query' },
           },
+          {
+            path: '/race/quiz',
+            name: 'quiz',
+            component: () => import('@/pages/modules/quiz.vue'),
+            meta: { title: 'Lesson quiz', auth: 'record:query' },
+          },
         ],
       },
       // user
@@ -74,7 +80,7 @@ export const routes = [
           },
         ],
       },
-      // forum 
+      // forum
       {
         path: '/forum',
         redirect: '/forum/index',
@@ -121,7 +127,7 @@ export const routes = [
       },
     ],
   },
-  
+
 
   {
     path: '/login',
@@ -167,7 +173,7 @@ export function filterRoutes(routes, permission) {
       if(auth ==='article'){
         route.hidden =true;
       }
-      // 
+      //
       if (!auth || set.has(auth)) {
         arr.push(route);
         if (route.children) {
