@@ -9,18 +9,21 @@
         <p>Time Limit: {{ timeLimit }}</p>
       </div>
       <div class="right">
-        <router-link to="/questions">
-          <button>Have Questions</button>
-        </router-link>
-
+        <div>
+          <router-link to="/questions">
+            <button>Have Questions</button>
+          </router-link>
+        </div>
+        <div v-if="$has('ai:teacher')">
         <!-- Text input for quiz question and Generate Quiz button -->
-        <input type="text" v-model="quizQuestion" placeholder="Enter a quiz question" />
+        <input class='inputclass' type="text" v-model="quizQuestion" placeholder="Enter a quiz question" />
         <button @click="generateQuiz">Generate Quiz</button>
 
         <!-- Display the generated quiz -->
         <div v-if="generatedQuiz">
           <h3>Generated Quiz</h3>
           <p>{{ generatedQuiz }}</p>
+        </div>
         </div>
       </div>
     </div>
@@ -182,6 +185,10 @@ export default {
 
 <style>
 /* Style for the outer container */
+.inputclass{
+  width: 200px;
+  height: 100px;
+}
 .container {
   font-family: Arial, sans-serif;
   margin: 20px;
