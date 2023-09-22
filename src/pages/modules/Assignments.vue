@@ -12,6 +12,16 @@
         <router-link to="/questions">
           <button>Have Questions</button>
         </router-link>
+
+        <!-- Text input for quiz question and Generate Quiz button -->
+        <input type="text" v-model="quizQuestion" placeholder="Enter a quiz question" />
+        <button @click="generateQuiz">Generate Quiz</button>
+
+        <!-- Display the generated quiz -->
+        <div v-if="generatedQuiz">
+          <h3>Generated Quiz</h3>
+          <p>{{ generatedQuiz }}</p>
+        </div>
       </div>
     </div>
 
@@ -69,6 +79,8 @@ export default {
       showComments: false,
       grades: null,
       comments: null,
+      quizQuestion: '', // Added quizQuestion data property
+      generatedQuiz: '', // Added property to store the generated quiz
     };
   },
   methods: {
@@ -129,6 +141,19 @@ export default {
           // Handle errors (e.g., display an error message)
           this.uploadMessage = 'An error occurred during file upload.';
           console.error(error);
+        });
+    },
+    generateQuiz() {
+      // Send a POST request to the Flask backend to generate the quiz
+      axios
+        .post(`${BASE_URL}/generate_quiz`, { quizQuestion: this.quizQuestion })
+        .then((response) => {
+          // Handle the response and set the generatedQuiz property
+          this.generatedQuiz = response.data.quiz;
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error('Error generating quiz:', error);
         });
     },
     downloadFile() {
