@@ -42,9 +42,9 @@ export default {
         action: undefined,
       },
       rules: {
-        type: { required: true, message: '请选择权限类型' },
+        type: { required: true, message: '' },
         label: { required: true, message: '请输入权限名称' },
-        action: { required: true, message: '请选择权限动作' },
+        action: { required: true, message: '' },
       },
     };
   },

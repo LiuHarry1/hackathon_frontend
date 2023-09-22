@@ -118,7 +118,7 @@ const decorator = {
   grade: ['grade', {
     rules: [{
       required: true,
-      message: '请选择Grade！',
+      message: '',
     }],
   }],
 };

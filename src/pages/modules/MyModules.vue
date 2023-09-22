@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       moduleData: {
-        mname: 'Quiz Assignment',
+        mname: 'My Module',
         progress: 50,
         description: 'This is a sample module description',
         lessons: [

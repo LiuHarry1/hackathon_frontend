@@ -42,7 +42,7 @@ export default {
   computed: {
     rules() {
       return {
-        status: { required: true, message: '请选择审核结果' },
+        status: { required: true, message: '' },
         description: {
           required: this.formData.status === 2, // 拒绝时必填拒绝理由
           message: '请填写备注',
