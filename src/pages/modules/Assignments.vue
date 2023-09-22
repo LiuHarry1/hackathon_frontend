@@ -16,15 +16,15 @@
         </div>
         <div v-if="$has('ai:teacher')">
         <!-- Text input for quiz question and Generate Quiz button -->
-        <input class='inputclass' type="text" v-model="quizQuestion" placeholder="Enter a quiz question" />
+        <input class='inputclass' type="text" v-model="quizQuestion" placeholder="Enter keywords of quiz" />
         <div>
-          <button @click="generateQuiz">Generate Quiz</button>
+          <button @click="generateQuiz">AI Generate Quiz</button>
         </div>
 
 
         <!-- Display the generated quiz -->
         <div v-if="generatedQuiz">
-          <h3>Generated Quiz</h3>
+          <h3>AI Generated Quiz</h3>
           <p>{{ generatedQuiz }}</p>
         </div>
         </div>
@@ -49,16 +49,7 @@
       </div>
       <div class="button_layer1">
         <div>
-          <button @click="fetchGrades">Grades</button>
-        </div>
-        <div v-if="showGrades">
-          <!-- Display grades here -->
-          <p v-if="grades">Grades: {{ grades }}</p>
-        </div>
-      </div>
-      <div class="button_layer1">
-        <div>
-          <button @click="fetchComments">Comments</button>
+          <button @click="fetchComments">AI Review</button>
         </div>
         <div v-if="showComments">
           <!-- Display comments here -->
@@ -111,7 +102,7 @@ export default {
       // Use Axios or similar library to make the API call
 
       axios
-        .get(`${BASE_URL}/comments`)
+        .get(`${BASE_URL}/ai_service/auto_review`)
         // .get('https://vmg65etpjy.us-east-1.awsapprunner.com/comments')
         .then((response) => {
           this.comments = response.data.comments;
@@ -152,7 +143,7 @@ export default {
     generateQuiz() {
       // Send a POST request to the Flask backend to generate the quiz
       axios
-        .post(`${BASE_URL}/generate_quiz`, { quizQuestion: this.quizQuestion })
+        .post(`${BASE_URL}/ai_service/auto_generate`, { quizQuestion: this.quizQuestion })
         .then((response) => {
           // Handle the response and set the generatedQuiz property
           this.generatedQuiz = response.data.quiz;
@@ -164,7 +155,7 @@ export default {
     },
     downloadFile() {
       // Replace 'your-backend-url' with the actual URL of your Flask backend
-      const downloadUrl = `${BASE_URL}/download/quiz_assignment.txt`;
+      const downloadUrl = `${BASE_URL}/download/quiz_ai_generate.txt`;
       // const downloadUrl = 'https://vmg65etpjy.us-east-1.awsapprunner.com/download/quiz_assignment.txt';
 
       // Use Axios to request and trigger the file download
