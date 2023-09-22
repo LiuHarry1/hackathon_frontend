@@ -15,7 +15,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://tdrinigusj.us-east-1.awsapprunner.com',
         changeOrigin: true,
       },
     },

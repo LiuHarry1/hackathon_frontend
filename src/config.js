@@ -3,7 +3,7 @@
 // const BASE_URL = 'https://tdrinigusj.us-east-1.awsapprunner.com';
 
 const  AI_BASE_URL = 'http://localhost:9600';
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://tdrinigusj.us-east-1.awsapprunner.com';
 
 
 export { BASE_URL };
