@@ -47,7 +47,10 @@
     import Hitokoto from "../../components/forum/Hitokoto";
     import ChatMsg from "../../components/forum/ChatMsg.vue"
 
-import ChatMsgVue from '@/components/forum/ChatMsg.vue';
+    import axios from 'axios'; // Import Axios
+    import { BASE_AIURL } from '../../config';
+
+
     export default {
       name: "Home",
       metaInfo: {
@@ -128,6 +131,16 @@ import ChatMsgVue from '@/components/forum/ChatMsg.vue';
           };
 
           try{
+            // axios
+            // .get(`${BASE_AIURL}/comments`)
+            // .then((response) => {
+            //   this.comments = response.data.comments;
+            //   this.showComments = true;
+            // })
+            // .catch((error) => {
+            //   console.error('Error fetching comments:', error);
+            // });
+
             await this.$api.getanswer(
             requestData
           ).then(data=>{

@@ -46,6 +46,7 @@
 
       submit(){
         this.$emit("submit",this.content);
+        this.clearContent();
       },
       cancel(){
         this.$emit("cancel");

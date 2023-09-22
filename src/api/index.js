@@ -52,7 +52,7 @@ export const grantRole = data => axios.post('/role/grant', data);
  */
 export const getArticleList = () => axios.get('/article/list');
 export const getArticle = params => axios.get('/article', { params });
-export const getHotTopic = () => axios.get('/hottpoics');
+export const getHotTopic = () => axios.get('/topic');
 export const addComment = (data) => axios.post('/article', data);
 
 /**
