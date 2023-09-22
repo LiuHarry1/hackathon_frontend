@@ -134,7 +134,7 @@ function createObjectUrl(file) {
 // 文件上传
 function uploadFile() {
   if (!this.file) {
-    return message.warn('请选择要上传的文件');
+    return message.warn('');
   }
   const { file } = this;
   if (!this.sizeLimited(file.size)) {

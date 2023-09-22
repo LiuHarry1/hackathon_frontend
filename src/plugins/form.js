@@ -44,7 +44,7 @@ function matcher(name) {
         const label = formOption?.label;
         ctx.data.attrs = Object.assign({
           allowClear: true,
-          placeholder: isString(label) ? getPlaceholder('请选择', label) : '',
+          placeholder: isString(label) ? getPlaceholder('', label) : '',
         }, attrs);
         const { change, input } = on;
         on.change = value => {

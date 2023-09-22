@@ -28,10 +28,10 @@
             :disabled="!selectedKeys.length"
             @click="batchDelete"
           >
-            批量删除 ({{ selectedKeys.length }})
+            Delete  ({{ selectedKeys.length }})
           </a-button>
           <a-button v-if="$has('user:import')" @click="$refs.import.show()">
-            Excel导入
+            ExcelImport
           </a-button>
           <a-button
             v-if="$has('user:export')"
@@ -109,10 +109,10 @@ const TEACHER_COLUMNS = [
   { title: 'Name', dataIndex: 'name' },
   { title: '职称', customRender: ({ rank }) => rankMap[rank] },
   { title: '描述', dataIndex: 'description', ellipsis: true },
-  { title: '创建时间', dataIndex: 'create_time' },
-  { title: '修改时间', dataIndex: 'update_time' },
+  { title: 'Create Date', dataIndex: 'create_time' },
+  { title: 'Update Date', dataIndex: 'update_time' },
   {
-    title: '操作',
+    title: 'Operation',
     align: 'center',
     width: 100,
     scopedSlots: { customRender: 'action' },
@@ -121,7 +121,7 @@ const TEACHER_COLUMNS = [
 
 function exportExcel(data) {
   const header = TEACHER_COLUMNS.map(v => v.title);
-  header.pop(); // 去掉最后一栏操作栏
+  header.pop(); // 去掉最后一栏Operation栏
   return exportData({
     name: '教师信息',
     data,
@@ -131,8 +131,8 @@ function exportExcel(data) {
       name: 'Name',
       rank: ['职称', rank => rankMap[rank]],
       description: '描述',
-      create_time: '创建时间',
-      update_time: '修改时间',
+      create_time: 'Create Date',
+      update_time: 'Update Date',
     },
   });
 }

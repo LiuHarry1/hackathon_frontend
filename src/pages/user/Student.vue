@@ -28,10 +28,10 @@
             :disabled="!selectedKeys.length"
             @click="batchDelete"
           >
-            批量删除 ({{ selectedKeys.length }})
+            Delete  ({{ selectedKeys.length }})
           </a-button>
           <a-button v-if="$has('user:import')" @click="$refs.import.show()">
-            Excel导入
+            ExcelImport
           </a-button>
           <a-button
             v-if="$has('user:export')"
@@ -111,10 +111,10 @@ const STUDENT_COLUMNS = [
   { title: 'Sex', customRender: ({ sex }) => sexMap[sex] },
   { title: 'Grade', customRender: ({ grade }) => gradeMap[grade] },
   { title: 'Class', dataIndex: 'class' },
-  { title: '创建时间', dataIndex: 'create_time' },
-  { title: '修改时间', dataIndex: 'update_time' },
+  { title: 'Create Date', dataIndex: 'create_time' },
+  { title: 'Update Date', dataIndex: 'update_time' },
   {
-    title: '操作',
+    title: 'Operation',
     align: 'center',
     width: 100,
     scopedSlots: { customRender: 'action' },
@@ -123,7 +123,7 @@ const STUDENT_COLUMNS = [
 
 function exportExcel(data) {
   const header = STUDENT_COLUMNS.map(v => v.title);
-  header.pop(); // 去掉最后一栏操作栏
+  header.pop(); // 去掉最后一栏Operation栏
   return exportData({
     name: 'Student信息',
     data,
@@ -134,8 +134,8 @@ function exportExcel(data) {
       sex: ['Sex', sex => sexMap[sex]],
       grade: ['Grade', grade => gradeMap[grade]],
       class: 'Class',
-      create_time: '创建时间',
-      update_time: '修改时间',
+      create_time: 'Create Date',
+      update_time: 'Update Date',
     },
   });
 }

@@ -79,15 +79,15 @@
           <a-descriptions-item label="文件大小">
             {{ (info.fsize / Math.pow(1024, 2)).toFixed(2) }} MB
           </a-descriptions-item>
-          <a-descriptions-item label="修改时间">
+          <a-descriptions-item label="Update Date">
             {{ new Date(Math.trunc(info.putTime / 10000)).toLocaleString() }}
           </a-descriptions-item>
         </a-descriptions>
       </a-spin>
 
-      <!--操作按钮-->
+      <!--Operation按钮-->
       <div class="action">
-        <h3>操作</h3>
+        <h3>Operation</h3>
         <p style="color: grey">
           重新上传后，预览文件若未刷新，可稍后再试，下载不受影响。
         </p>

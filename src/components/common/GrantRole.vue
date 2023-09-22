@@ -4,7 +4,7 @@
       required
       label="当前角色"
       prop="role_id"
-      :rules="{ required: true, message: '请选择目标角色' }"
+      :rules="{ required: true, message: '' }"
     >
       <a-select
         v-model="formData.role_id"

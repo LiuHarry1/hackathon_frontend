@@ -182,7 +182,7 @@ function createTableColumns(h) {
       customRender: action => <a-tag>{action}</a-tag>,
     },
     {
-      title: '操作',
+      title: 'Operation',
       width: 100,
       customRender: (row) => {
         const buttons = [

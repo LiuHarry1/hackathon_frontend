@@ -42,7 +42,7 @@ export default {
       },
       rules: {
         label: { required: true, message: '请输入角色名称' },
-        permissions: { required: true, message: '请选择权限' },
+        permissions: { required: true, message: '' },
       },
     };
   },

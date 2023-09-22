@@ -232,7 +232,7 @@
           // parentArticleCommentId: commentId,
           articleComment: content
         }
-       
+
         //TODO POST 上传
         this.$api.addComment(params).then(()=>{
           this.$message.success("回复成功");
@@ -266,7 +266,7 @@
        * @param comment
        */
       onCommentDel(comment){
-        this.$confirm('此操作将永久删除该条评论, 是否继续?', '提示', {
+        this.$confirm('此Operation将永久删除该条评论, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'

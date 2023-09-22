@@ -25,7 +25,7 @@
             :disabled="!selectedKeys.length"
             @click="batchDelete"
           >
-            批量删除 ({{ selectedKeys.length }})
+            Delete  ({{ selectedKeys.length }})
           </a-button>
           <a-button
             v-if="$has('record:export')"
@@ -156,7 +156,7 @@ function createTableColumns(h) {
     { title: '更新时间', dataIndex: 'update_time' },
     { title: '备注', dataIndex: 'description' },
     {
-      title: '操作',
+      title: 'Operation',
       align: 'center',
       scopedSlots: {
         customRender: 'action',
@@ -167,7 +167,7 @@ function createTableColumns(h) {
 
 function exportExcel(data) {
   const header = createTableColumns().map(v => v.title);
-  header.pop(); // 去掉最后一栏操作栏
+  header.pop(); // 去掉最后一栏Operation栏
   return exportData({
     name: '参赛记录信息',
     data,

@@ -187,7 +187,7 @@ function createTableColumns(h) {
     { title: '角色名称', dataIndex: 'label', ellipsis: true },
     { title: '角色描述', dataIndex: 'description' },
     {
-      title: '操作',
+      title: 'Operation',
       width: 100,
       customRender: (row) => {
         const buttons = [

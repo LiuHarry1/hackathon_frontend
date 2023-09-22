@@ -39,7 +39,7 @@
           </a-button>
         </a-button-group>
       </template>
-      <!-- action 插槽用于渲染每一行记录的操作按钮 -->
+      <!-- action 插槽用于渲染每一行记录的Operation按钮 -->
       <template #action="record">
         <a-space>
           <!-- 成绩录入 -->
@@ -49,23 +49,23 @@
             </a>
           </a-tooltip>
 
-          <!--编辑-->
-          <a v-if="$has('race:update')" @click="editRace(record)">
-            <a-icon type="edit" />
-          </a>
+<!--          &lt;!&ndash;编辑&ndash;&gt;-->
+<!--          <a v-if="$has('race:update')" @click="editRace(record)">-->
+<!--            <a-icon type="edit" />-->
+<!--          </a>-->
 
-          <!--删除-->
-          <a-popconfirm
-            v-if="$has('race:delete')"
-            title="Confirm Delete？"
-            placement="left"
-            @confirm="deleteRace(record)"
-          >
-            <template #icon>
-              <a-icon type="question-circle-o" style="color: orange" />
-            </template>
-            <a><a-icon type="delete" /></a>
-          </a-popconfirm>
+<!--          &lt;!&ndash;删除&ndash;&gt;-->
+<!--          <a-popconfirm-->
+<!--            v-if="$has('race:delete')"-->
+<!--            title="Confirm Delete？"-->
+<!--            placement="left"-->
+<!--            @confirm="deleteRace(record)"-->
+<!--          >-->
+<!--            <template #icon>-->
+<!--              <a-icon type="question-circle-o" style="color: orange" />-->
+<!--            </template>-->
+<!--            <a><a-icon type="delete" /></a>-->
+<!--          </a-popconfirm>-->
         </a-space>
       </template>
     </AntTable>
@@ -124,7 +124,7 @@ export default {
       Object.assign(this, { pageSize, current });
     },
     goToMyModule(){
-      this.$router.go('/race/mymodules');
+      this.$router.replace('/race/mymodules');
     },
     search() {
       this.current = 1;
@@ -263,7 +263,7 @@ function createTableColumns() {
 
 function exportExcel(data) {
   const header = createTableColumns().map(v => v.title);
-  header.pop(); // 去掉最后一栏操作栏
+  header.pop(); // 去掉最后一栏Operation栏
   return exportData({
     name: '赛事信息',
     data,
@@ -276,8 +276,8 @@ function exportExcel(data) {
       description: '描述',
       location: '地点',
       date: '举办时间',
-      create_time: '创建时间',
-      update_time: '修改时间',
+      create_time: 'Create Date',
+      update_time: 'Update Date',
     },
   });
 }
