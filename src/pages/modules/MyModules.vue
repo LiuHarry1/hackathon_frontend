@@ -85,6 +85,8 @@ export default {
     },
     startQuiz(lessonId) {
       // Implement the quiz functionality
+      // Implement the assignment functionality
+      this.$router.push('/race/quiz');
     },
     startAssignment(lessonId) {
       // Implement the assignment functionality
