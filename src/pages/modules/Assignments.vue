@@ -43,7 +43,7 @@
 
         <!-- File Download Section -->
         <div>
-          <h2>Download Quiz Assignment Text File</h2>
+          <h2>Download Quiz Assignment File</h2>
           <button @click="downloadFile">Download File</button>
         </div>
       </div>
