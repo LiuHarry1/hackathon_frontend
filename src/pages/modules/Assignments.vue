@@ -155,7 +155,7 @@ export default {
     },
     downloadFile() {
       // Replace 'your-backend-url' with the actual URL of your Flask backend
-      const downloadUrl = `${BASE_URL}/download/quiz_assignment.txt`;
+      const downloadUrl = `${BASE_URL}/download/quiz_ai_generate.txt`;
       // const downloadUrl = 'https://vmg65etpjy.us-east-1.awsapprunner.com/download/quiz_assignment.txt';
 
       // Use Axios to request and trigger the file download
