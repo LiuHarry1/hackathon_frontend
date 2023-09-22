@@ -23,7 +23,7 @@ export default {
   computed: {
     props() {
       return {
-        title: '确认删除？',
+        title: '确认Delete？',
         placement: 'left',
         ...this.$attrs,
       };

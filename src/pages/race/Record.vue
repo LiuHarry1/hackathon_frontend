@@ -8,7 +8,7 @@
       @reset="search"
     />
 
-    <!--信息列表-->
+    <!--Info列表-->
     <AntTable
       v-model="selectedKeys"
       row-key="record_id"
@@ -32,7 +32,7 @@
             :loading="exporting"
             @click="exportAll"
           >
-            全量导出
+            Export
           </a-button>
         </a-button-group>
       </template>
@@ -104,14 +104,14 @@ export default {
     },
     batchDelete() {
       this.$modal.confirm({
-        title: `确认删除选中的${this.selectedKeys.length}项数据?`,
+        title: `确认Delete选中的${this.selectedKeys.length}项数据?`,
         onOk: () => this.$api.deleteRecord(this.selectedKeys)
           .then(() => {
-            this.$message.success('删除成功!');
+            this.$message.success('DeleteSuccess!');
             this.selectedKeys.splice(0);
             this.getData();
           }).catch(e => {
-            this.$message.error(e.msg || '删除失败!');
+            this.$message.error(e.msg || 'Delete失败!');
             throw e;
           }),
       });
@@ -137,7 +137,7 @@ const statusMap = {
 };
 function createTableColumns(h) {
   return [
-    { title: '名称', dataIndex: 'title' },
+    { title: 'Name', dataIndex: 'title' },
     { title: '参赛人', dataIndex: 'sname' },
     { title: '指导老师', dataIndex: 'tname' },
     { title: '成绩', dataIndex: 'score' },
@@ -154,7 +154,7 @@ function createTableColumns(h) {
     },
     { title: '登记时间', dataIndex: 'create_time' },
     { title: '更新时间', dataIndex: 'update_time' },
-    { title: '备注', dataIndex: 'description' },
+    { title: 'Note', dataIndex: 'description' },
     {
       title: 'Operation',
       align: 'center',
@@ -169,16 +169,16 @@ function exportExcel(data) {
   const header = createTableColumns().map(v => v.title);
   header.pop(); // 去掉最后一栏Operation栏
   return exportData({
-    name: '参赛记录信息',
+    name: '参赛记录Info',
     data,
     header,
     keyMap: {
-      title: '名称',
+      title: 'Name',
       sname: '参赛人',
       tname: '指导老师',
       score: '成绩',
       status: ['状态', status => statusMap[status]?.text],
-      description: '备注',
+      description: 'Note',
       create_time: '登记时间',
       update_time: '更新时间',
     },
@@ -188,19 +188,19 @@ function exportExcel(data) {
 function createSearchOptions() {
   return [
     {
-      label: '赛事名称',
+      label: '赛事Name',
       key: 'title',
       default: '',
       component: 'input',
     },
     {
-      label: '参赛人名称',
+      label: '参赛人Name',
       key: 'sname',
       default: '',
       component: 'input',
     },
     {
-      label: '指导老师名称',
+      label: '指导老师Name',
       key: 'tname',
       default: '',
       component: 'input',

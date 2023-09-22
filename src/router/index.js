@@ -158,9 +158,9 @@ const router = new VueRouter({
 });
 
 /**
- * 根据权限过滤路由，生成pro-layout需要的menu
+ * 根据Permission过滤路由，生成pro-layout需要的menu
  * @param {[]} routes
- * @param {[]} permission 当前用户拥有的权限
+ * @param {[]} permission 当前用户拥有的Permission
  */
 export function filterRoutes(routes, permission) {
   const set = new Set(permission);

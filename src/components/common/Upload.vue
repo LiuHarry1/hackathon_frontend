@@ -1,7 +1,7 @@
 <template>
   <a-modal
     ok-text="开始上传"
-    cancel-text="取消"
+    cancel-text="Cancel"
     centered
     :title="`${record.title} 附件上传`"
     :visible="visible"
@@ -85,14 +85,14 @@ export default {
     getFile(file) {
       this.file = file;
       this.sizeLimited(file.size);
-      return false; // 取消自动上传
+      return false; // Cancel自动上传
     },
     handleRemove() {
       this.file = null;
     },
     async preview({ type, originFileObj }) {
       if (!type.includes('image')) {
-        return message.warn('该类型暂不支持预览');
+        return message.warn('该Type暂不支持预览');
       } else if (!this.sizeLimited(originFileObj.size)) {
         return;
       }

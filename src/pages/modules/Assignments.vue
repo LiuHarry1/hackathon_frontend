@@ -10,7 +10,7 @@
       </div>
       <div class="right">
         <div>
-          <router-link to="/questions">
+          <router-link to="/forum/index">
             <button>Have Questions</button>
           </router-link>
         </div>
@@ -47,13 +47,15 @@
           <button @click="downloadFile">Download File</button>
         </div>
       </div>
-      <div class="button_layer1">
+      <div class="button_layer1" v-if="$has('ai:teacher')">
         <div>
           <button @click="fetchComments">AI Review</button>
         </div>
         <div v-if="showComments">
           <!-- Display comments here -->
           <p v-if="comments">Comments: {{ comments }}</p>
+          <br/>
+          <p v-if="mark">Mark: {{ mark }}</p>
         </div>
       </div>
     </div>
@@ -78,6 +80,7 @@ export default {
       comments: null,
       quizQuestion: '', // Added quizQuestion data property
       generatedQuiz: '', // Added property to store the generated quiz
+      mark: ''
     };
   },
   methods: {
@@ -105,7 +108,8 @@ export default {
         .get(`${BASE_URL}/ai_service/auto_review`)
         // .get('https://vmg65etpjy.us-east-1.awsapprunner.com/comments')
         .then((response) => {
-          this.comments = response.data.comments;
+          this.comments = response.data.comment;
+          this.mark = response.data.mark;
           this.showComments = true;
         })
         .catch((error) => {

@@ -8,7 +8,7 @@
       @reset="search"
     />
 
-    <!--信息列表-->
+    <!--Info列表-->
     <AntTable
       v-model="selectedKeys"
       row-key="race_id"
@@ -49,12 +49,12 @@
             </a>
           </a-tooltip>
 
-<!--          &lt;!&ndash;编辑&ndash;&gt;-->
+<!--          &lt;!&ndash;Edit&ndash;&gt;-->
 <!--          <a v-if="$has('race:update')" @click="editRace(record)">-->
 <!--            <a-icon type="edit" />-->
 <!--          </a>-->
 
-<!--          &lt;!&ndash;删除&ndash;&gt;-->
+<!--          &lt;!&ndash;Delete&ndash;&gt;-->
 <!--          <a-popconfirm-->
 <!--            v-if="$has('race:delete')"-->
 <!--            title="Confirm Delete？"-->
@@ -189,21 +189,21 @@ export default {
         this.getData();
       }).catch(e => {
         console.error(e);
-        this.$message.error(e.msg || '删除失败');
+        this.$message.error(e.msg || 'Delete失败');
       }).finally(() => {
         this.loading = false;
       });
     },
     batchDelete() {
       this.$modal.confirm({
-        title: `确认删除选中的${this.selectedKeys.length}项数据?`,
+        title: `确认Delete选中的${this.selectedKeys.length}项数据?`,
         onOk: () => this.$api.deleteRace(this.selectedKeys)
           .then(() => {
-            this.$message.success('删除成功!');
+            this.$message.success('DeleteSuccess!');
             this.selectedKeys.splice(0);
             this.getData();
           }).catch(e => {
-            this.$message.error(e.msg || '删除失败!');
+            this.$message.error(e.msg || 'Delete失败!');
             throw e;
           }),
       });
@@ -246,7 +246,7 @@ export default {
 
 function createTableColumns() {
   return [
-    { title: 'Module ID', dataIndex: 'id' },
+    { title: 'Module ID', dataIndex: 'race_id' },
     { title: 'Module Name', dataIndex: 'title' },
     { title: 'Progress(%)', dataIndex: 'progress' },
     { title: 'Start Date', dataIndex: 'startdate' },
@@ -265,15 +265,15 @@ function exportExcel(data) {
   const header = createTableColumns().map(v => v.title);
   header.pop(); // 去掉最后一栏Operation栏
   return exportData({
-    name: '赛事信息',
+    name: '赛事Info',
     data,
     header,
     keyMap: {
-      title: '赛事名称',
+      title: '赛事Name',
       level: ['级别', level => raceLevelMap[level]],
       sponsor: '主办方',
       type: '类别',
-      description: '描述',
+      description: 'Description',
       location: '地点',
       date: '举办时间',
       create_time: 'Create Date',

@@ -41,11 +41,11 @@ const store = new Vuex.Store({
 export default store;
 
 /**
- * 判断当前用户是否具有对应的权限
+ * 判断当前用户是否具有对应的Permission
  * @param {string} permission 类似于user:query这样的字符串
  * @returns {boolean}
  */
 Vue.prototype.$has = function(permission) {
-  // 检查 store.getters.permissions 数组中是否存在与 permission 相等的任何一个元素(即拥有权限）。
+  // 检查 store.getters.permissions 数组中是否存在与 permission 相等的任何一个元素(即拥有Permission）。
   return store.getters.permissions.some(v => v === permission);
 };

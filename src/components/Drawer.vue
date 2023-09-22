@@ -5,8 +5,8 @@ export default {
     return {
       getContainer: 'body',
       title: undefined,
-      okText: '确定',
-      cancelText: '取消',
+      okText: 'Confirm',
+      cancelText: 'Cancel',
       content: undefined,
       maskClosable: false,
       width: 500,

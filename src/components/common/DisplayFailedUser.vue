@@ -3,7 +3,7 @@
     <div style="margin-bottom: 20px">
       <span style="color: limegreen">
         <a-icon type="check-circle" />
-        <span>成功 {{ users.length - fail.length }} 人</span>
+        <span>Success {{ users.length - fail.length }} 人</span>
       </span>
       <a-divider type="vertical" />
       <span style="color: red">

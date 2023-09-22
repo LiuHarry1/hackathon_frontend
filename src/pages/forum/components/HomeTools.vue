@@ -7,7 +7,7 @@
           <!--placement="left"-->
           <!--width="300"-->
           <!--trigger="hover">-->
-          <!--<i slot="reference" title="修改皮肤" class="el-icon-brush"></i>-->
+          <!--<i slot="reference" title="Edit皮肤" class="el-icon-brush"></i>-->
           <!--<el-form class="skin-tools-form" inline>-->
             <!--<el-form-item label="皮肤色：">-->
               <!--<el-color-picker></el-color-picker>-->
@@ -20,7 +20,7 @@
             <!--<el-form-item label="字体激活色：">-->
               <!--<el-color-picker></el-color-picker>-->
             <!--</el-form-item>-->
-            <!--<el-form-item label="成功色：" >-->
+            <!--<el-form-item label="Success色：" >-->
               <!--<el-color-picker></el-color-picker>-->
             <!--</el-form-item>-->
             <!--<el-form-item label="警告色：" >-->
@@ -29,7 +29,7 @@
             <!--<el-form-item label="危险色：" >-->
               <!--<el-color-picker></el-color-picker>-->
             <!--</el-form-item>-->
-            <!--<el-form-item label="信息色：" >-->
+            <!--<el-form-item label="Info色：" >-->
               <!--<el-color-picker></el-color-picker>-->
             <!--</el-form-item>-->
           <!--</el-form>-->

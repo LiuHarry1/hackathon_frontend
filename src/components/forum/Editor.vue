@@ -78,7 +78,7 @@
           styleActiveLine: true, // 高亮选中行
           matchTopics: this.matchTopics,
           placeholder: this.placeholder,
-          readOnly: false, // 确保 readOnly 为 false，允许编辑
+          readOnly: false, // 确保 readOnly 为 false，允许Edit
         },
         menus: [],
         menuProps:{
@@ -146,7 +146,7 @@
         let cm = this.$refs.editor.codemirror;
         cm.replaceSelection(content);
       },
-      //修改编辑方式
+      //EditEdit方式
       renderMd(){
         let md = require('../../vendor/markdown/').default;
         this.contentRender = md.render(this.content);
@@ -173,7 +173,7 @@
         for (let value of result){
           value = value.replace(/^\s*[^#]/,'');
           value = value.replace(/\s*$/,'');
-          //确定级别
+          //Confirm级别
           let arr = value.split('#');
           let level = arr.length - 1;
           //验证是否到达最大级别
@@ -226,7 +226,7 @@
       fileUpload(e){
         let files = e.target.files;
         if (files.length === 0){
-          this.$message.info("请选择图片");
+          this.$message.info("PleaseSelect图片");
           return;
         }
         let file = files[0];

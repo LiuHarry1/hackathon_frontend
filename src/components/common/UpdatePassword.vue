@@ -72,14 +72,14 @@ function getRules() {
   return {
     password: {
       required: true,
-      message: '请输入Password！',
+      message: 'InputPassword！',
     },
     newPass: {
       required: true,
       validator: (rule, value, callback) => {
         const oldPass = this.formData.password;
         if (!value) {
-          callback(new Error('请输入新Password！'));
+          callback(new Error('Input新Password！'));
         } else if (value === oldPass) {
           callback(new Error('新Password不能与原Password相同！'));
         } else {

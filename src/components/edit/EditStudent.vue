@@ -91,19 +91,19 @@ const decorator = {
   sid: ['sid', {
     rules: [{
       required: true,
-      message: '请输入账号！',
+      message: 'Input账号！',
     }],
   }],
   password: ['password', {
     rules: [{
       required: true,
-      message: '请输入Password！',
+      message: 'InputPassword！',
     }],
   }],
   name: ['name', {
     rules: [{
       required: true,
-      message: '请输入Name！',
+      message: 'InputName！',
     }],
   }],
   sex: ['sex', {
@@ -112,7 +112,7 @@ const decorator = {
   class: ['class', {
     rules: [{
       required: true,
-      message: '请输入Class！',
+      message: 'InputClass！',
     }],
   }],
   grade: ['grade', {

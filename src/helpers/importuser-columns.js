@@ -28,7 +28,7 @@ const columns = {
   ],
   teacher: [
     {
-      title: '工号',
+      title: 'Number',
       dataIndex: 'account',
       sort: (a, b) => a.account - b.account,
     },
@@ -41,11 +41,11 @@ const columns = {
       dataIndex: 'name',
     },
     {
-      title: '职称',
+      title: 'Level',
       dataIndex: 'rank',
     },
     {
-      title: '描述',
+      title: 'Description',
       dataIndex: 'description',
     },
   ],

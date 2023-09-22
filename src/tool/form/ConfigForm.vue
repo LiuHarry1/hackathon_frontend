@@ -47,7 +47,7 @@ export default {
       default: () => [],
     },
     /**
-     * 用于匹配组件，用户可以根据接收到的组件名称返回想要的组件，返回结果将作为createElement的第一个参数
+     * 用于匹配组件，用户可以根据接收到的组件Name返回想要的组件，返回结果将作为createElement的第一个参数
      */
     matcher: {
       type: Function,
@@ -62,7 +62,7 @@ export default {
       default: key => key,
     },
     /**
-     * 为校验失败项Add 的默认类名，外部可根据这个类名去定义/修改组件样式
+     * 为校验失败项Add 的默认类名，外部可根据这个类名去定义/Edit组件样式
      */
     errorClass: {
       type: String,
@@ -173,7 +173,7 @@ export default {
 
       return {
         ...otherOptions, // 其他选项直接原样传递，保证拓展性
-        formOption: this.flatOptions[key], // 基本信息，便于用户使用matcher自定义组件
+        formOption: this.flatOptions[key], // 基本Info，便于用户使用matcher自定义组件
         key,
         nativeOn,
         on: Object.assign({}, on, {

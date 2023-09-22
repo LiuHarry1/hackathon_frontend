@@ -4,8 +4,8 @@
     :wrapper-col="wrapperCol"
     :form="form"
   >
-    <a-form-item label="名称">
-      <a-input v-decorator="decorator.title" placeholder="赛事名称"/>
+    <a-form-item label="Name">
+      <a-input v-decorator="decorator.title" placeholder="赛事Name"/>
     </a-form-item>
     <a-form-item label="主办方">
       <a-input v-decorator="decorator.sponsor" placeholder="主办方"/>
@@ -25,7 +25,7 @@
     <a-form-item label="类别">
       <a-select
         v-decorator="decorator.type"
-        placeholder="请选择赛事类别"
+        placeholder="PleaseSelect赛事类别"
       >
         <a-select-option
           v-for="item in ['A', 'B', 'C', 'D', 'E', 'F']"
@@ -39,8 +39,8 @@
     <a-form-item label="级别">
       <a-select v-decorator="decorator.level" :options="raceLevels"/>
     </a-form-item>
-    <a-form-item label="描述">
-      <a-textarea v-decorator="decorator.description" placeholder="描述"/>
+    <a-form-item label="Description">
+      <a-textarea v-decorator="decorator.description" placeholder="Description"/>
     </a-form-item>
   </a-form>
 </template>
@@ -84,13 +84,13 @@ const decorator = {
   title: ['title', {
     rules: [{
       required: true,
-      message: '请输入赛事名称！',
+      message: 'Input赛事Name！',
     }],
   }],
   sponsor: ['sponsor', {
     rules: [{
       required: true,
-      message: '请输入主办方！',
+      message: 'Input主办方！',
     }],
   }],
   date: ['date', {

@@ -1,20 +1,20 @@
 <template>
   <a-form-model ref="form" :model="formData" :rules="rules" layout="vertical">
-    <a-form-model-item label="权限名称" prop="label">
-      <a-input v-model.trim="formData.label" placeholder="请输入权限名称" />
+    <a-form-model-item label="PermissionName" prop="label">
+      <a-input v-model.trim="formData.label" placeholder="InputPermissionName" />
     </a-form-model-item>
-    <a-form-model-item label="权限类型" prop="type">
+    <a-form-model-item label="PermissionType" prop="type">
       <a-select
         v-model="formData.type"
         :options="permissionTypes"
-        placeholder="请选择权限类型"
+        placeholder="PleaseSelectPermissionType"
       />
     </a-form-model-item>
     <a-form-model-item label="Action" prop="action">
       <a-select
         v-model="formData.action"
         allowClear
-        placeholder="请选择权限动作"
+        placeholder="PleaseSelectPermissionAction"
         :options="actions"
       />
     </a-form-model-item>
@@ -43,7 +43,7 @@ export default {
       },
       rules: {
         type: { required: true, message: '' },
-        label: { required: true, message: '请输入权限名称' },
+        label: { required: true, message: 'InputPermissionName' },
         action: { required: true, message: '' },
       },
     };

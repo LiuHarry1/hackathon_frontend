@@ -14,7 +14,7 @@
         v-model="formData.tid"
         show-search
         allow-clear
-        placeholder="请选择导师，没有可不填"
+        placeholder="PleaseSelect导师，没有可不填"
         :filter-option="false"
         :show-arrow="false"
         :options="teachers"
@@ -45,7 +45,7 @@ export default {
         tid: undefined,
       },
       rules: {
-        score: { required: true, message: '请输入比赛成绩' },
+        score: { required: true, message: 'Input比赛成绩' },
       },
     };
   },

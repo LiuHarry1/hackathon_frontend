@@ -98,7 +98,7 @@
     },
     methods: {
       /**
-       * 获取消息列表
+       * 获Cancel息列表
        */
       getNotifys(){
         let params = this.$refs.page.getPage();

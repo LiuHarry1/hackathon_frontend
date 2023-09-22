@@ -34,14 +34,14 @@
       <div v-if="!startEdit" class="operate" style="text-align: right;">
         <span @click="startReplay = !startReplay">Reply</span>
         <!-- <template v-if="isMy">
-          <span @click="startEdit = true">编辑</span>
-          <span @click="onDel(comment)">删除</span>
+          <span @click="startEdit = true">Edit</span>
+          <span @click="onDel(comment)">Delete</span>
         </template> -->
       </div>
       <template v-if="startEdit">
         <div style="width: 100%;text-align: right;margin-top: 10px;">
           <el-button size="mini" class="my-button-style-skin" @click="onEdit(comment)">确认</el-button>
-          <el-button size="mini" class="my-button-style" @click="startEdit = false">取消</el-button>
+          <el-button size="mini" class="my-button-style" @click="startEdit = false">Cancel</el-button>
         </div>
       </template>
       <template v-if="startReplay">
@@ -118,14 +118,14 @@
         });
       },
       /**
-       * 编辑事件
+       * Edit事件
        */
       onEdit(comment){
         this.startEdit = false;
         this.$emit("edit",comment);
       },
       /**
-       * 删除事件
+       * Delete事件
        */
       onDel(comment){
         this.$emit("del",comment);

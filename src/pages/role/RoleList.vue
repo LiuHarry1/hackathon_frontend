@@ -19,7 +19,7 @@
     >
       <template #header>
         <a-button v-if="$has('role:add')" type="primary" @click="addRole">
-          <a-icon type="plus" />Add 角色
+          <a-icon type="plus" />Add Role
         </a-button>
       </template>
       <template #expandedRowRender="record">
@@ -93,7 +93,7 @@ export default {
         this.tableData = data.data;
         this.total = data.count;
       }).catch(e => {
-        this.$message.error(e.msg || '获取角色列表失败');
+        this.$message.error(e.msg || '获取Role列表失败');
       }).finally(() => {
         this.loading = false;
       });
@@ -101,7 +101,7 @@ export default {
     addRole() {
       let vnode;
       this.$drawer({
-        title: 'Add 角色',
+        title: 'Add Role',
         content: h => (vnode = <EditRole />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -118,7 +118,7 @@ export default {
     edit(row) {
       let vnode;
       this.$drawer({
-        title: '编辑角色',
+        title: 'EditRole',
         content: h => (vnode = <EditRole data={row} />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -127,7 +127,7 @@ export default {
             this.search();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '修改失败');
+            this.$message.error(e.msg || 'Edit失败');
             throw e;
           });
         },
@@ -135,13 +135,13 @@ export default {
     },
     remove(row) {
       this.$modal.confirm({
-        title: `确认删除 ${row.label}?`,
+        title: `确认Delete ${row.label}?`,
         onOk: () => this.$api.deleteRole([row.id]).then(() => {
-          this.$message.success('删除成功');
+          this.$message.success('DeleteSuccess');
           this.search();
         }).catch(e => {
           console.error(e);
-          this.$message.error(e.msg || '删除失败');
+          this.$message.error(e.msg || 'Delete失败');
           throw e;
         }),
       });
@@ -161,19 +161,19 @@ export default {
 function createSearchOptions() {
   return [
     {
-      label: '角色编号',
+      label: 'RoleID',
       key: 'id',
       default: '',
       component: 'input',
     },
     {
-      label: '角色名称',
+      label: 'RoleName',
       key: 'label',
       default: '',
       component: 'input',
     },
     {
-      label: '角色描述',
+      label: 'RoleDescription',
       key: 'description',
       default: '',
       component: 'input',
@@ -183,16 +183,16 @@ function createSearchOptions() {
 
 function createTableColumns(h) {
   return [
-    { title: '角色编号', dataIndex: 'id', width: 80 },
-    { title: '角色名称', dataIndex: 'label', ellipsis: true },
-    { title: '角色描述', dataIndex: 'description' },
+    { title: 'RoleID', dataIndex: 'id', width: 80 },
+    { title: 'RoleName', dataIndex: 'label', ellipsis: true },
+    { title: 'RoleDescription', dataIndex: 'description' },
     {
       title: 'Operation',
       width: 100,
       customRender: (row) => {
         const buttons = [
-          this.$has('role:update') && <a onClick={this.edit.bind(this, row)}>编辑</a>,
-          this.$has('role:delete') && <a onClick={this.remove.bind(this, row)}>删除</a>,
+          this.$has('role:update') && <a onClick={this.edit.bind(this, row)}>Edit</a>,
+          this.$has('role:delete') && <a onClick={this.remove.bind(this, row)}>Delete</a>,
         ];
         return <div>{buttons}</div>;
       },

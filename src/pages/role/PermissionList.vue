@@ -22,7 +22,7 @@
           type="primary"
           @click="addPermission"
         >
-          <a-icon type="plus" />Add 权限
+          <a-icon type="plus" />Add Permission
         </a-button>
       </template>
     </AntTable>
@@ -88,7 +88,7 @@ export default {
     addPermission() {
       let vnode;
       this.$confirm({
-        title: 'Add 权限',
+        title: 'Add Permission',
         content: h => (vnode = <EditPermission />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -105,7 +105,7 @@ export default {
     edit(row) {
       let vnode;
       this.$confirm({
-        title: '编辑权限',
+        title: 'EditPermission',
         content: h => (vnode = <EditPermission data={row} />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -114,7 +114,7 @@ export default {
             this.getData();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '修改失败');
+            this.$message.error(e.msg || 'Edit失败');
             throw e;
           });
         },
@@ -122,13 +122,13 @@ export default {
     },
     remove(row) {
       this.$modal.confirm({
-        title: `确认删除 ${row.label}?`,
+        title: `确认Delete ${row.label}?`,
         onOk: () => this.$api.deletePermission([row.id]).then(() => {
-          this.$message.success('删除成功');
+          this.$message.success('DeleteSuccess');
           this.getData();
         }).catch(e => {
           console.error(e);
-          this.$message.error(e.msg || '删除失败');
+          this.$message.error(e.msg || 'Delete失败');
           throw e;
         }),
       });
@@ -139,19 +139,19 @@ export default {
 function createSearchOptions() {
   return [
     {
-      label: '权限编号',
+      label: 'PermissionID',
       key: 'id',
       default: '',
       component: 'input',
     },
     {
-      label: '权限名称',
+      label: 'PermissionName',
       key: 'label',
       default: '',
       component: 'input',
     },
     {
-      label: '权限类型',
+      label: 'PermissionType',
       key: 'type',
       default: undefined,
       component: 'select',
@@ -160,7 +160,7 @@ function createSearchOptions() {
       },
     },
     {
-      label: '权限动作',
+      label: 'PermissionAction',
       key: 'action',
       default: undefined,
       component: 'select',
@@ -173,9 +173,9 @@ function createSearchOptions() {
 
 function createTableColumns(h) {
   return [
-    { title: '编号', dataIndex: 'id' },
-    { title: '权限名称', dataIndex: 'label' },
-    { title: '权限类型', dataIndex: 'type' },
+    { title: 'ID', dataIndex: 'id' },
+    { title: 'PermissionName', dataIndex: 'label' },
+    { title: 'PermissionType', dataIndex: 'type' },
     {
       title: 'Action',
       dataIndex: 'action',
@@ -186,8 +186,8 @@ function createTableColumns(h) {
       width: 100,
       customRender: (row) => {
         const buttons = [
-          this.$has('permission:update') && <a onClick={this.edit.bind(this, row)}>编辑</a>,
-          this.$has('permission:delete') && <a onClick={this.remove.bind(this, row)}>删除</a>,
+          this.$has('permission:update') && <a onClick={this.edit.bind(this, row)}>Edit</a>,
+          this.$has('permission:delete') && <a onClick={this.remove.bind(this, row)}>Delete</a>,
         ];
         return <div>{buttons}</div>;
       },

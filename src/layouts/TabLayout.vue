@@ -87,13 +87,13 @@ export default {
       const componentName = last(matched).components.default.name;
       this.dustbin.push(componentName);
       this.pageList.splice(curIndex, 1);
-      // 如果删除的是当前页才需要跳转
+      // 如果Delete的是当前页才需要跳转
       if (key === this.activePage) {
         // 判断向左跳还是向右跳
         curIndex = curIndex >= this.pageList.length ? this.pageList.length - 1 : curIndex;
         const page = this.pageList[curIndex];
         this.$router.push(page.fullPath).finally(() => {
-          this.dustbin.splice(0); // 重置，否则会影响到某些组件的缓存
+          this.dustbin.splice(0); // Reset，否则会影响到某些组件的缓存
         });
       }
     },
@@ -137,7 +137,7 @@ export default {
       });
       const restPages = this.pageList.slice(index);
       this.pageList = restPages;
-      // 判断当前activePage是否在将要删除的页面中
+      // 判断当前activePage是否在将要Delete的页面中
       const curActivePage = restPages.find(item => item.fullPath === this.activePage);
       if (!curActivePage) {
         this.activePage = restPages[0].fullPath;
@@ -153,7 +153,7 @@ export default {
       });
       const restPages = this.pageList.slice(0, index + 1);
       this.pageList = restPages;
-      // 判断当前activePage是否在将要删除的页面中
+      // 判断当前activePage是否在将要Delete的页面中
       const curActivePage = restPages.find(item => item.fullPath === this.activePage);
       if (!curActivePage) {
         this.activePage = last(restPages).fullPath;

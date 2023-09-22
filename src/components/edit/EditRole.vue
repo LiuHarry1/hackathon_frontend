@@ -1,12 +1,12 @@
 <template>
   <a-form-model ref="form" :model="formData" :rules="rules">
-    <a-form-model-item label="角色名称" prop="label">
-      <a-input v-model.trim="formData.label" placeholder="请输入权限名称" />
+    <a-form-model-item label="RoleName" prop="label">
+      <a-input v-model.trim="formData.label" placeholder="InputPermissionName" />
     </a-form-model-item>
-    <a-form-model-item label="描述" prop="description">
-      <a-input v-model.trim="formData.description" placeholder="请输入备注" />
+    <a-form-model-item label="Description" prop="description">
+      <a-input v-model.trim="formData.description" placeholder="InputNote" />
     </a-form-model-item>
-    <a-form-model-item label="权限" prop="permissions">
+    <a-form-model-item label="Permission" prop="permissions">
       <a-spin v-if="loading" style="width: 100%" />
       <a-tree
         v-else
@@ -41,7 +41,7 @@ export default {
         permissions: [],
       },
       rules: {
-        label: { required: true, message: '请输入角色名称' },
+        label: { required: true, message: 'InputRoleName' },
         permissions: { required: true, message: '' },
       },
     };
@@ -66,7 +66,7 @@ export default {
         this.initPermissions(data.data);
       }).catch(e => {
         console.error(e);
-        this.$message.error(e.msg || '权限列表获取失败');
+        this.$message.error(e.msg || 'Permission列表获取失败');
       }).finally(() => {
         this.loading = false;
       });

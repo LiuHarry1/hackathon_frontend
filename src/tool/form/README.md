@@ -2,7 +2,7 @@
 
 当前业务中，搜索框出现频率极高，几乎和表格同时出现。很多时候多页面复用同一个搜索框，因此需要一套方案来管理搜索框，以便代码可以高效复用。`SearchForm`提供了配置化的表单创建方式。
 
-## 表格信息
+## 表格Info
 
 ### 参数
 
@@ -20,7 +20,7 @@
 
 | 参数      | 说明                                                         | 默认值 |
 | --------- | ------------------------------------------------------------ | ------ |
-| label     | (必填)String｜Object，为Object时，其结构也为OptionSchema，其他见备注 | 无     |
+| label     | (必填)String｜Object，为Object时，其结构也为OptionSchema，其他见Note | 无     |
 | key       | (必填)String                                                 | false  |
 | default   | (必填)当前字段的初始化值，如果为函数将会传入$route.query, 如果当前环境不存在$route则传一个空对象。这意味着你可以通过query来初始化。 | false  |
 | rules     | async-validator的选项，支持校验，如果为一个函数，则直接视为validator函数 | 无  |
@@ -32,10 +32,10 @@
 | on        | 组件的on                                                       | 无     |
 | nativeOn  | 组件的nativeOn                                                 | 无     |
 
-备注：
+Note：
 
 1. on & nativeOn：参数经过了特殊处理，每个函数的首个参数为setState函数，关于setState函数，下方有说明。其余参数依次取用即可。
-   主要是为了方便实现一些特殊情况下需要手动绑定函数来实现的表单联动。例如绑定change事件在切换标签后根据标签类型设置对应的默认值。
+   主要是为了方便实现一些特殊情况下需要手动绑定函数来实现的表单联动。例如绑定change事件在切换标签后根据标签Type设置对应的默认值。
 2. props & attrs：**props和attrs在内部会被合并，统一作为attrs**。建议使用时做到**全局统一**：即要用props就全用props，否则就全用attrs。
 3. 由于除过表单配置项全部视为组件配置项，所以除了上面列出的组件配置项，还支持其他如class和style等等
    其他参数参考[官方文档](https://cn.vuejs.org/v2/guide/render-function.html#%E6%B7%B1%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1)。
@@ -45,7 +45,7 @@
 | 事件名 | 参数                                                         |
 | ------ | ------------------------------------------------------------ |
 | search | (result, formData): result是mapper转化后的数据，formData是原始数据 |
-| reset  | (formData): formData为重置后的默认数据。需要注意的是，reset实际上是一次调用OptionsSchema中的default函数并传入一个空对象 |
+| reset  | (formData): formData为Reset后的默认数据。需要注意的是，reset实际上是一次调用OptionsSchema中的default函数并传入一个空对象 |
 | change | (formData)：最新的formData                                   |
 
 ### 方法
@@ -53,10 +53,10 @@
 组件提供了几个方法供给外部调用
 
 - getResult、getFormData 获取对应的数据。
-- reset：重置表单数据
+- reset：Reset表单数据
 - toQuery: 根据toQuery中配置的规则转化formData，并返回一个query对象
 - setState：设置formData值，传入一个对象或返回对象的函数，函数接受原始formData作为参数。
-- validate：校验formData，返回promise，校验成功resolve值为getResult()获取的最终值。
+- validate：校验formData，返回promise，校验Successresolve值为getResult()获取的最终值。
 
 ## 响应式和表单项联动
 
@@ -73,7 +73,7 @@
 2. formData: 组件内部的数据
 3. setState：函数，用来设置formData，传入一个对象或者函数，如果是函数，则该函数接受formData作为唯一参数，并返回一个对象。
 
-component为函数时以返回值为准，忽略外部的组件配置项。你可以直接使用jsx返回VNode。也可以返回组件配置项，只不过当你返回组建配置项时，需要额外加上component选项，其值为string类型，指明需要渲染的组件。
+component为函数时以返回值为准，忽略外部的组件配置项。你可以直接使用jsx返回VNode。也可以返回组件配置项，只不过当你返回组建配置项时，需要额外加上component选项，其值为stringType，指明需要渲染的组件。
 
 ## matcher
 

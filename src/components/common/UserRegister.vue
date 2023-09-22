@@ -108,7 +108,7 @@ export default {
       // await this.$api.login(this.formData);
       // Cookie.set('uid', 'testuser');
       this.$router.replace({ path: '/login' });
-      this.$message.success(`${timeFix()}，注册成功`);
+      this.$message.success(`${timeFix()}，注册Success`);
     },
     // #region onsubmit
     // async onSubmit(e) {
@@ -177,7 +177,7 @@ function timeFix() {
   .login-button
     margin-bottom 20px
   .register-button
-    margin-top 20px 
+    margin-top 20px
 
 .code-input
   display flex

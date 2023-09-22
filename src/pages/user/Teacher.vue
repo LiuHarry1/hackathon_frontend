@@ -8,7 +8,7 @@
       @reset="search"
     />
 
-    <!--信息列表-->
+    <!--Info列表-->
     <AntTable
       v-model="selectedKeys"
       row-key="tid"
@@ -21,7 +21,7 @@
       <template #header>
         <a-button-group>
           <a-button v-if="$has('user:add')" type="primary" @click="addUser">
-            Add 教师
+            Add Teacher
           </a-button>
           <a-button
             v-if="$has('user:delete')"
@@ -38,23 +38,23 @@
             :loading="exporting"
             @click="exportAll"
           >
-            全量导出
+            Export
           </a-button>
         </a-button-group>
       </template>
       <template #action="record">
         <a-space>
           <template v-if="$has('user:update')">
-            <!--编辑-->
+            <!--Edit-->
             <a @click="editUser(record)">
               <a-icon type="edit" />
             </a>
 
-            <!--重置Password-->
+            <!--ResetPassword-->
             <a-popconfirm
-              title="确认重置Password？"
+              title="确认ResetPassword？"
               ok-text="确认"
-              cancel-text="取消"
+              cancel-text="Cancel"
               placement="left"
               @confirm="resetPassword(record)"
             >
@@ -63,7 +63,7 @@
               </template>
               <a-tooltip placement="top">
                 <template #title>
-                  <span>重置Password</span>
+                  <span>ResetPassword</span>
                 </template>
                 <a><a-icon type="rollback" /></a>
               </a-tooltip>
@@ -75,11 +75,11 @@
             </a>
           </template>
 
-          <!--删除-->
+          <!--Delete-->
           <a-popconfirm
-            title="确认删除？"
+            title="确认Delete？"
             ok-text="确认"
-            cancel-text="取消"
+            cancel-text="Cancel"
             placement="left"
             @confirm="deleteUser(record)"
           >
@@ -105,10 +105,10 @@ import UserImport from '@/components/common/UserImport.vue';
 import GrantRole from '@/components/common/GrantRole';
 
 const TEACHER_COLUMNS = [
-  { title: '工号', dataIndex: 'tid' },
+  { title: 'Number', dataIndex: 'tid' },
   { title: 'Name', dataIndex: 'name' },
-  { title: '职称', customRender: ({ rank }) => rankMap[rank] },
-  { title: '描述', dataIndex: 'description', ellipsis: true },
+  { title: 'Level', customRender: ({ rank }) => rankMap[rank] },
+  { title: 'Description', dataIndex: 'description', ellipsis: true },
   { title: 'Create Date', dataIndex: 'create_time' },
   { title: 'Update Date', dataIndex: 'update_time' },
   {
@@ -123,14 +123,14 @@ function exportExcel(data) {
   const header = TEACHER_COLUMNS.map(v => v.title);
   header.pop(); // 去掉最后一栏Operation栏
   return exportData({
-    name: '教师信息',
+    name: 'TeacherInfo',
     data,
     header,
     keyMap: {
-      tid: '工号',
+      tid: 'Number',
       name: 'Name',
-      rank: ['职称', rank => rankMap[rank]],
-      description: '描述',
+      rank: ['Level', rank => rankMap[rank]],
+      description: 'Description',
       create_time: 'Create Date',
       update_time: 'Update Date',
     },
@@ -141,7 +141,7 @@ export default {
   name: 'Teacher',
   components: { UserImport },
   metaInfo: {
-    title: '教师管理',
+    title: 'Teacher管理',
   },
   data() {
     return {
@@ -214,21 +214,21 @@ export default {
         type: 'teacher',
         account: row.tid,
       }).then(() => {
-        this.$message.success({ content: '已重置', key });
+        this.$message.success({ content: '已Reset', key });
       }).catch(() => {
-        this.$message.error({ content: '重置失败', key });
+        this.$message.error({ content: 'Reset失败', key });
       });
     },
     addUser() {
       let vnode;
 
       this.$confirm({
-        title: 'Add 教师',
+        title: 'Add Teacher',
         content: h => (vnode = h(EditTeacher)),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
           return this.$api.addUser('teacher', values).then(() => {
-            this.$message.success('Add 成功');
+            this.$message.success('Add Success');
             this.getData();
           }).catch(e => {
             console.error(e);
@@ -241,7 +241,7 @@ export default {
     editUser(row) {
       let vnode;
       this.$confirm({
-        title: '修改信息',
+        title: 'EditInfo',
         content: h => (vnode = <EditTeacher type="update" data={row} />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -249,11 +249,11 @@ export default {
             'teacher',
             values,
           ).then(() => {
-            this.$message.success('修改成功');
+            this.$message.success('EditSuccess');
             this.getData();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '修改失败');
+            this.$message.error(e.msg || 'Edit失败');
             throw e;
           });
         },
@@ -261,27 +261,27 @@ export default {
     },
     deleteUser(row) {
       const key = Math.random();
-      this.$message.loading({ content: '正在删除', duration: 0, key });
+      this.$message.loading({ content: '正在Delete', duration: 0, key });
       this.$api.deleteUser('teacher', {
         ids: [row.tid],
       }).then(() => {
-        this.$message.success({ content: '删除成功!', key });
+        this.$message.success({ content: 'DeleteSuccess!', key });
         this.getData();
       }).catch(e => {
-        this.$message.error({ content: e.msg || '删除失败!', key });
+        this.$message.error({ content: e.msg || 'Delete失败!', key });
       });
     },
     batchDelete() {
       this.$modal.confirm({
-        title: `确认删除选中的${this.selectedKeys.length}项数据?`,
+        title: `确认Delete选中的${this.selectedKeys.length}项数据?`,
         onOk: () => this.$api.deleteUser('teacher', {
           ids: this.selectedKeys,
         }).then(() => {
-          this.$message.success('删除成功!');
+          this.$message.success('DeleteSuccess!');
           this.selectedKeys.splice(0);
           this.getData();
         }).catch(e => {
-          this.$message.error(e.msg || '删除失败!');
+          this.$message.error(e.msg || 'Delete失败!');
           throw e;
         }),
       });
@@ -321,7 +321,7 @@ export default {
 function createSearchOptions() {
   return [
     {
-      label: '工号',
+      label: 'Number',
       key: 'tid',
       default: '',
       component: 'input',
@@ -333,7 +333,7 @@ function createSearchOptions() {
       component: 'input',
     },
     {
-      label: '职称',
+      label: 'Level',
       key: 'rank',
       default: undefined,
       component: 'select',

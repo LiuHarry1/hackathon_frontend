@@ -12,10 +12,10 @@
         <a-radio-button :value="2">拒绝</a-radio-button>
       </a-radio-group>
     </a-form-model-item>
-    <a-form-model-item label="备注" prop="description">
+    <a-form-model-item label="Note" prop="description">
       <a-input
         v-model="formData.description"
-        placeholder="请输入备注"
+        placeholder="InputNote"
         auto-focus
       />
     </a-form-model-item>
@@ -45,7 +45,7 @@ export default {
         status: { required: true, message: '' },
         description: {
           required: this.formData.status === 2, // 拒绝时必填拒绝理由
-          message: '请填写备注',
+          message: '请填写Note',
         },
       };
     },

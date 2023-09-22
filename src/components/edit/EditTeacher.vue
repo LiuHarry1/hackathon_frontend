@@ -83,19 +83,19 @@ const decorator = {
   tid: ['tid', {
     rules: [{
       required: true,
-      message: '请输入职工号！',
+      message: 'Input职Number！',
     }],
   }],
   password: ['password', {
     rules: [{
       required: true,
-      message: '请输入Password！',
+      message: 'InputPassword！',
     }],
   }],
   name: ['name', {
     rules: [{
       required: true,
-      message: '请输入Name！',
+      message: 'InputName！',
     }],
   }],
   rank: ['rank', {

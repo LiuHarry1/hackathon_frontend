@@ -10,7 +10,7 @@
         >
           列展示
         </a-checkbox>
-        <a @click="init">重置</a>
+        <a @click="init">Reset</a>
       </div>
       <a-divider />
       <div class="ant-checkbox-group">

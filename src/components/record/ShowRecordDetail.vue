@@ -18,12 +18,12 @@
       <a-descriptions-item label="举办时间">
         {{ formatDate(record.date) }}
       </a-descriptions-item>
-      <a-descriptions-item label="指导教师">
+      <a-descriptions-item label="指导Teacher">
         {{ record.tname || '暂无' }}
       </a-descriptions-item>
       <a-descriptions-item
         :span="2"
-        label="教师工号"
+        label="TeacherNumber"
       >
         {{ record.tid || '暂无' }}
       </a-descriptions-item>
@@ -73,7 +73,7 @@
           :column="2"
           title="附件详情"
         >
-          <a-descriptions-item label="文件类型">
+          <a-descriptions-item label="文件Type">
             {{ info.mimeType }}
           </a-descriptions-item>
           <a-descriptions-item label="文件大小">
@@ -149,7 +149,7 @@ export default {
   },
   watch: {
     visible(newVal) {
-      // 当前状态为：可见并且已上传文件 时，才请求文件信息
+      // 当前状态为：可见并且已上传文件 时，才请求文件Info
       if (newVal && this.record.uploaded) {
         this.initFileInfo();
       }
@@ -170,7 +170,7 @@ export default {
           message.warn(result.msg);
         }
       }).catch(() => {
-        message.error('文件信息获取失败');
+        message.error('文件Info获取失败');
       }).finally(() => {
         this.loading = false;
       });
@@ -181,7 +181,7 @@ export default {
 };
 
 function preview() {
-  const stopLoading = message.loading('获取文件信息');
+  const stopLoading = message.loading('获取文件Info');
   getDownloadUrl({
     name: this.record._id,
   }).then(({ data: url }) => {
@@ -197,10 +197,10 @@ function download() {
   const { title, _id } = this.record;
   const { mimeType } = this.info;
   if (!mimeType) {
-    return message.error('文件信息获取失败，请重试');
+    return message.error('文件Info获取失败，请重试');
   }
   const type = mimeType.split('/')[1];
-  const stopLoading = message.loading('获取文件信息');
+  const stopLoading = message.loading('获取文件Info');
   getDownloadUrl({
     name: _id,
   }).then(({ data: url }) => {

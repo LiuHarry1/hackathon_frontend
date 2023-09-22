@@ -20,7 +20,7 @@
         {{ race.location }}
       </a-descriptions-item>
       <br>
-      <a-descriptions-item label="描述">
+      <a-descriptions-item label="Description">
         {{ race.description }}
       </a-descriptions-item>
     </a-descriptions>

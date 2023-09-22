@@ -24,8 +24,8 @@
             <el-dropdown @command="handleCommand">
               <i class="el-icon-more"></i>
               <el-dropdown-menu slot="dropdown" style="width: 150px;">
-                <el-dropdown-item icon="el-icon-edit-outline" command="goEditArticle">编辑</el-dropdown-item>
-                <el-dropdown-item v-if="article.articleStatus === 1" divided icon="el-icon-delete" command="delArticle">删除</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-edit-outline" command="goEditArticle">Edit</el-dropdown-item>
+                <el-dropdown-item v-if="article.articleStatus === 1" divided icon="el-icon-delete" command="delArticle">Delete</el-dropdown-item>
                 <el-dropdown-item v-else divided icon="el-icon-delete" command="restoreArticle">恢复</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -210,7 +210,7 @@
           articleId: this.articleId,
           articleStatus: status
         }).then(res=>{
-          this.$message.success('修改成功');
+          this.$message.success('EditSuccess');
           this.getArticle();
         })
       },
@@ -235,19 +235,19 @@
 
         //TODO POST 上传
         this.$api.addComment(params).then(()=>{
-          this.$message.success("回复成功");
+          this.$message.success("Success");
           this.getArticle();
         })
 
         // this.$store.dispatch("Comment/addArticleComment",params).then(res=>{
         //   this.$refs.articleCommentAdd.clearContent();
-        //   this.$message.success("回复成功");
+        //   this.$message.success("回复Success");
         //   this.getArticle();
         // })
       },
 
       /**
-       * 编辑评论
+       * Edit评论
        * @param comment
        */
       onCommentEdit(comment){
@@ -256,23 +256,23 @@
           articleComment: comment.articleComment
         }
         this.$store.dispatch("Comment/editArticleComment",params).then(res=>{
-          this.$message.success("编辑成功");
+          this.$message.success("EditSuccess");
           this.getArticle();
         })
       },
 
       /**
-       * 删除评论
+       * Delete评论
        * @param comment
        */
       onCommentDel(comment){
-        this.$confirm('此Operation将永久删除该条评论, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('此Operation将永久Delete该条评论, 是否继续?', '提示', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           this.$store.dispatch("Comment/delArticleComment",comment.articleCommentId).then(res=>{
-            this.$message.success("删除成功");
+            this.$message.success("DeleteSuccess");
             this.getArticle();
           })
         });

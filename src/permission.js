@@ -38,14 +38,14 @@ router.beforeEach(async (to, from, next) => {
     return;
   }
 
-  /* 已获取用户信息 */
+  /* 已获取用户Info */
   if (store.getters.permissions?.length) {
     next();
     NProgress.done();
     return;
   }
 
-  /* 未获取用户信息 */
+  /* 未获取用户Info */
   try {
     await store.dispatch('initUser');
   } catch (e) {
@@ -53,14 +53,14 @@ router.beforeEach(async (to, from, next) => {
     next({ path: loginPath, query: { redirect: to.fullPath } });
     notification.error({
       message: '错误',
-      description: '请求用户信息失败，请重试',
+      description: '请求用户Info失败，请重试',
     });
     NProgress.done();
     return;
   }
 
-  /* 成功获取用户信息 */
-  // 检查路由权限
+  /* Success获取用户Info */
+  // 检查路由Permission
   if (!checkAccess(to)) {
     next({ path: defaultRoutePath, replace: true });
     NProgress.done();

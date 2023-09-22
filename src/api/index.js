@@ -31,7 +31,7 @@ export const updateRecord = data => axios.patch('/record/update', data);
 export const deleteRecord = data => axios.delete('/record/delete', { data });
 
 /**
- * 权限
+ * Permission
  */
 export const getPermissions = params => axios.get('/permission/list', { params });
 export const addPermission = data => axios.post('/permission/add', data);
@@ -39,7 +39,7 @@ export const updatePermission = data => axios.post('/permission/update', data);
 export const deletePermission = data => axios.delete('/permission/delete', { data });
 
 /**
- * 角色
+ * Role
  */
 export const getRoles = params => axios.get('/role/list', { params });
 export const addRole = data => axios.post('/role/add', data);

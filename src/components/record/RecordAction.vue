@@ -34,7 +34,7 @@ export default {
         this.freshData();
       }).catch(e => {
         console.error(e);
-        this.$message.error(e.msg || '删除失败');
+        this.$message.error(e.msg || 'Delete失败');
       });
     },
     editRecord() {
@@ -47,13 +47,13 @@ export default {
     studentEditRecord() {
       let score = this.record.score;
       this.$confirm({
-        title: '修改成绩',
+        title: 'Edit成绩',
         content: h => (
           <a-form-model>
             <a-form-model-item required={true} label="成绩录入">
               <a-input
                 value={score}
-                placeholder="请输入比赛成绩"
+                placeholder="Input比赛成绩"
                 onInput={e => { score = e.target.value; }}
               />
             </a-form-model-item>
@@ -63,7 +63,7 @@ export default {
           let msg;
           score = score.trim();
           if (!score) {
-            msg = '请输入成绩';
+            msg = 'Input成绩';
           } else if (this.record.score === score) {
             msg = '未检测到变动';
           }
@@ -75,11 +75,11 @@ export default {
             record_id: this.record.record_id,
             score,
           }).then(() => {
-            this.$message.success('修改成功');
+            this.$message.success('EditSuccess');
             this.freshData();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '修改失败');
+            this.$message.error(e.msg || 'Edit失败');
             throw e;
           });
         },
@@ -97,7 +97,7 @@ export default {
             status: values.status,
             description: values.description,
           }).then(() => {
-            this.$message.success('提交成功');
+            this.$message.success('提交Success');
             this.freshData();
           }).catch(e => {
             console.error(e);

@@ -2,14 +2,14 @@
   <a-form-model :model="formData">
     <a-form-model-item
       required
-      label="当前角色"
+      label="当前Role"
       prop="role_id"
       :rules="{ required: true, message: '' }"
     >
       <a-select
         v-model="formData.role_id"
         :options="options"
-        placeholder="请选择目标角色"
+        placeholder="PleaseSelect目标Role"
       />
     </a-form-model-item>
   </a-form-model>
@@ -58,7 +58,7 @@ export default {
         value: v.id,
       }));
     }).catch(e => {
-      this.$message.error(e.msg || '获取角色列表失败');
+      this.$message.error(e.msg || '获取Role列表失败');
     });
   },
   methods: {

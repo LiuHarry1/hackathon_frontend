@@ -7,13 +7,13 @@
     :after-close="removeFile"
     title="Improt"
     ok-text="确认导入"
-    cancel-text="取消"
+    cancel-text="Cancel"
     centered
     @cancel="onCancel"
     @ok="onOk"
   >
     <a-button type="link" @click="writeTemplateFile">
-      下载上传模板({{ type === "student" ? "Student" : "教师" }})
+      下载上传模板({{ type === "student" ? "Student" : "Teacher" }})
     </a-button>
     <a-upload
       accept=".xlsx,.xls"
@@ -78,7 +78,7 @@ export default {
         ].concat(
           this.type === 'student'
             ? [['Sex', 'sex'], ['Grade', 'grade'], ['Class', 'class']]
-            : [['职称', 'rank']],
+            : [['Level', 'rank']],
         ),
       );
     },
@@ -128,7 +128,7 @@ export default {
         this.$message.success(
           diff > 0
             ? `账号不能重复，已去重${diff}条数据`
-            : '文件读取成功',
+            : '文件读取Success',
         );
       };
       reader.onerror = e => {
@@ -163,7 +163,7 @@ export default {
         centered: true,
         onOk: () => this.$api.importUser(this.type, this.transformedData)
           .then(() => {
-            this.$message.success('导入成功');
+            this.$message.success('导入Success');
             this.visible = false;
           }).catch(e => {
             const message = e.msg || '导入失败';
@@ -194,10 +194,10 @@ export default {
         },
         teacher: {
           header: [...this.keyMap.keys()],
-          name: '教师上传模板.xlsx',
+          name: 'Teacher上传模板.xlsx',
           data: [
-            { 工号: '8002117259', Name: '张三', 职称: '教授' },
-            { 工号: '8002118360', Name: '李四', 职称: '副教授' },
+            { Number: '8002117259', Name: '张三', Level: '教授' },
+            { Number: '8002118360', Name: '李四', Level: '副教授' },
           ],
         },
       })[this.type]);
