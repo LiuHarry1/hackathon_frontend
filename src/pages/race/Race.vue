@@ -43,8 +43,8 @@
       <template #action="record">
         <a-space>
           <!-- 成绩录入 -->
-          <a-tooltip v-if="isStudent || $has('record:add')" title="成绩录入">
-            <a @click="addRecord(record)">
+          <a-tooltip v-if="isStudent || $has('record:add')" title="register">
+            <a @click="goToMyModule">
               <a-icon type="plus-circle" />
             </a>
           </a-tooltip>
@@ -122,6 +122,9 @@ export default {
   methods: {
     changePage({ pageSize, current }) {
       Object.assign(this, { pageSize, current });
+    },
+    goToMyModule(){
+      this.$router.go('/race/mymodules');
     },
     search() {
       this.current = 1;
