@@ -89,13 +89,13 @@ const decorator = {
   password: ['password', {
     rules: [{
       required: true,
-      message: '请输入密码！',
+      message: '请输入Password！',
     }],
   }],
   name: ['name', {
     rules: [{
       required: true,
-      message: '请输入姓名！',
+      message: '请输入Name！',
     }],
   }],
   rank: ['rank', {

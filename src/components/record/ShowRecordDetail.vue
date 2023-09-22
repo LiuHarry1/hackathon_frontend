@@ -12,7 +12,7 @@
       <a-descriptions-item label="参赛人">
         {{ record.sname }}
       </a-descriptions-item>
-      <a-descriptions-item label="学号">
+      <a-descriptions-item label="Number">
         {{ record.sid }}
       </a-descriptions-item>
       <a-descriptions-item label="举办时间">

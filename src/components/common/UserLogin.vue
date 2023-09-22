@@ -12,7 +12,7 @@
       @submit="onSubmit"
     >
       <a-form-model-item ref="account" prop="account">
-        <a-input v-model="formData.account" placeholder="学号/工号">
+        <a-input v-model="formData.account" placeholder="Number">
           <a-icon
             slot="prefix"
             type="user"
@@ -21,7 +21,7 @@
         </a-input>
       </a-form-model-item>
       <a-form-model-item ref="password" prop="password">
-        <a-input-password v-model="formData.password" placeholder="密码">
+        <a-input-password v-model="formData.password" placeholder="Password">
           <a-icon
             slot="prefix"
             type="lock"
@@ -83,8 +83,8 @@ export default {
         identity: 'student',
       },
       rules: {
-        account: { required: true, message: '请输入学号/工号！' },
-        password: { required: true, message: '请输入密码！' },
+        account: { required: true, message: 'Number！' },
+        password: { required: true, message: 'Password！' },
       },
     };
   },
@@ -117,7 +117,7 @@ export default {
         await this.$refs.form.validate();
         await this.$api.login(this.formData);
         await this.$router.replace({ path: '/' }).catch(e => e);
-        this.$message.success(`${timeFix()}，欢迎回来`);
+        this.$message.success(`${timeFix()}，Welcome back`);
       } catch (e) {
         if (!e) return; // 表单校验
         console.error(e);
@@ -145,7 +145,7 @@ export default {
 function timeFix() {
   const time = new Date();
   const hour = time.getHours();
-  return hour < 9 ? '早上好' : hour <= 11 ? '上午好' : hour <= 13 ? '中午好' : hour < 20 ? '下午好' : '晚上好';
+  return hour < 9 ? 'Good Morning' : hour <= 11 ? 'Good Morning' : hour <= 13 ? 'Good Morning' : hour < 20 ? 'Good Afteroon' : 'Good Evening';
 }
 </script>
 
@@ -177,7 +177,7 @@ function timeFix() {
   .login-button
     margin-bottom 20px
   .register-button
-    margin-top 20px 
+    margin-top 20px
 
 .code-input
   display flex

@@ -81,4 +81,4 @@ matcher用于匹配组件，如果matcher返回为空，则直接以name作为�
 
 可以直接使用SearchForm组件，也可以使用插件的方式全局注册。
 
-上面对input组件做了封装，添加了两个默认属性，placeholder和clearable。
+上面对input组件做了封装，Add 了两个默认属性，placeholder和clearable。

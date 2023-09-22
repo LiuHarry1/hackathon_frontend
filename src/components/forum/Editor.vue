@@ -202,7 +202,7 @@
             lastMenu.children.push(data);
           }
           nums[level] = nums[level] ? nums[level] : 0;
-          //给元素添加id
+          //给元素Add id
           let node = $(".markdown-body h" + level).eq(nums[level]++);
           $(node).attr("id",id);
         }

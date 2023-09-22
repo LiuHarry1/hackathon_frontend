@@ -97,13 +97,13 @@ const decorator = {
   password: ['password', {
     rules: [{
       required: true,
-      message: '请输入密码！',
+      message: '请输入Password！',
     }],
   }],
   name: ['name', {
     rules: [{
       required: true,
-      message: '请输入姓名！',
+      message: '请输入Name！',
     }],
   }],
   sex: ['sex', {
@@ -112,13 +112,13 @@ const decorator = {
   class: ['class', {
     rules: [{
       required: true,
-      message: '请输入班级！',
+      message: '请输入Class！',
     }],
   }],
   grade: ['grade', {
     rules: [{
       required: true,
-      message: '请选择年级！',
+      message: '请选择Grade！',
     }],
   }],
 };

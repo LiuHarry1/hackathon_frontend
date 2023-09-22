@@ -8,7 +8,7 @@
             <article-card v-for="(item,index) in datas" :article="item" easy :key="index"></article-card>
             <page ref="page" @change="loadList"></page>
           </el-card>
-         
+
         </template>
       </home-layout>
       <div class="chatbot" @click="dialogVisible=true">
@@ -17,8 +17,8 @@
         title="Chat Bot"
         :visible.sync="dialogVisible"
         width="30%"
-        :close-on-click-modal="false" 
-        :close-on-press-escape="false" 
+        :close-on-click-modal="false"
+        :close-on-press-escape="false"
         :modal='false'
         >
         <div style="height:40vh">
@@ -36,7 +36,7 @@
       </el-dialog>
     </div>
   </template>
-  
+
   <script type="text/ecmascript-6">
     // import UserInfoCard from "./components/UserInfoCard";
     import ArticleCard from "./components/ArticleCard";
@@ -65,14 +65,14 @@
             {title: "xxxxx系统2222", image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579600299787&di=faa9b4e409538e1d96c36994b839c934&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F20%2F62%2F01000000000000119086280352820.jpg"},
             {title: "xxxxx系统3333", image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579600299787&di=faa9b4e409538e1d96c36994b839c934&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F20%2F62%2F01000000000000119086280352820.jpg"},
             {title: "xxxxx系统4444", image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579600299787&di=faa9b4e409538e1d96c36994b839c934&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F20%2F62%2F01000000000000119086280352820.jpg"},
-  
+
           ],
           activeTab: "new",
           tabs:[
             {label: "Latest",value: "new"},
             {label: "Hot",value: "hot"}
           ],
-  
+
           datas: [],
           dialogVisible:false,
           msglist:[],
@@ -130,17 +130,20 @@
           query: this.chat, // 你的查询字符串
           };
 
-          try{
+
             // axios
-            // .get(`${BASE_AIURL}/comments`)
+            // .post("http://localhost:9600/ai_service/faq",requestData)
             // .then((response) => {
-            //   this.comments = response.data.comments;
-            //   this.showComments = true;
+            //   // console.log(response);
+            //   this.msglist.push({user: 'bot', msg: response.data.answer});
             // })
+              // this.comments = response.data.comments;
+              // this.showComments = true;
             // .catch((error) => {
             //   console.error('Error fetching comments:', error);
             // });
 
+          try{
             await this.$api.getanswer(
             requestData
           ).then(data=>{
@@ -152,16 +155,17 @@
 
           this.chat ='';
         },
+
         closeChat(){
           this.msglist =[];
           this.chat ='';
           this.dialogVisible =false;
         }
-      
+
       },
     }
   </script>
-  
+
   <style lang="stylus" rel="stylesheet/stylus">
   .home {
       .article-list-card{
@@ -189,7 +193,7 @@
       .diainput{
         margin-bottom: 20px;
       }
-     
+
   }
   /*
   .layout.route-home {
@@ -197,4 +201,3 @@
   }
   */
   </style>
-  

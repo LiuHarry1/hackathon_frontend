@@ -21,7 +21,7 @@
       <template #header>
         <a-button-group>
           <a-button v-if="$has('user:add')" type="primary" @click="addUser">
-            添加学生
+            Add Student
           </a-button>
           <a-button
             v-if="$has('user:delete')"
@@ -50,9 +50,9 @@
               <a-icon type="edit" />
             </a>
 
-            <!--重置密码-->
+            <!--重置Password-->
             <a-popconfirm
-              title="确认重置密码？"
+              title="确认重置Password？"
               ok-text="确认"
               cancel-text="取消"
               placement="left"
@@ -63,7 +63,7 @@
               </template>
               <a-tooltip placement="top">
                 <template #title>
-                  <span>重置密码</span>
+                  <span>重置Password</span>
                 </template>
                 <a><a-icon type="rollback" /></a>
               </a-tooltip>
@@ -106,11 +106,11 @@ import UserImport from '@/components/common/UserImport';
 import GrantRole from '@/components/common/GrantRole';
 
 const STUDENT_COLUMNS = [
-  { title: '学号', dataIndex: 'sid' },
-  { title: '姓名', dataIndex: 'name' },
-  { title: '性别', customRender: ({ sex }) => sexMap[sex] },
-  { title: '年级', customRender: ({ grade }) => gradeMap[grade] },
-  { title: '班级', dataIndex: 'class' },
+  { title: 'Number', dataIndex: 'sid' },
+  { title: 'Name', dataIndex: 'name' },
+  { title: 'Sex', customRender: ({ sex }) => sexMap[sex] },
+  { title: 'Grade', customRender: ({ grade }) => gradeMap[grade] },
+  { title: 'Class', dataIndex: 'class' },
   { title: '创建时间', dataIndex: 'create_time' },
   { title: '修改时间', dataIndex: 'update_time' },
   {
@@ -125,15 +125,15 @@ function exportExcel(data) {
   const header = STUDENT_COLUMNS.map(v => v.title);
   header.pop(); // 去掉最后一栏操作栏
   return exportData({
-    name: '学生信息',
+    name: 'Student信息',
     data,
     header,
     keyMap: {
-      sid: '学号',
-      name: '姓名',
-      sex: ['性别', sex => sexMap[sex]],
-      grade: ['年级', grade => gradeMap[grade]],
-      class: '班级',
+      sid: 'Number',
+      name: 'Name',
+      sex: ['Sex', sex => sexMap[sex]],
+      grade: ['Grade', grade => gradeMap[grade]],
+      class: 'Class',
       create_time: '创建时间',
       update_time: '修改时间',
     },
@@ -228,16 +228,16 @@ export default {
       let vnode;
 
       this.$confirm({
-        title: '添加学生',
+        title: 'Add Student',
         content: h => (vnode = h(EditStudent)),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
           return this.$api.addUser('student', values).then(() => {
-            this.$message.success('添加成功');
+            this.$message.success('Add 成功');
             this.getData();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '添加失败');
+            this.$message.error(e.msg || 'Add 失败');
             throw e;
           });
         },
@@ -326,19 +326,19 @@ export default {
 function createSearchOptions() {
   return [
     {
-      label: '学号',
+      label: 'Number',
       key: 'sid',
       default: '',
       component: 'input',
     },
     {
-      label: '姓名',
+      label: 'Name',
       key: 'name',
       default: '',
       component: 'input',
     },
     {
-      label: '性别',
+      label: 'Sex',
       key: 'sex',
       default: undefined,
       component: 'select',
@@ -347,7 +347,7 @@ function createSearchOptions() {
       },
     },
     {
-      label: '年级',
+      label: 'Grade',
       key: 'grade',
       default: undefined,
       component: 'select',
@@ -356,7 +356,7 @@ function createSearchOptions() {
       },
     },
     {
-      label: '班级',
+      label: 'Class',
       key: 'class',
       default: '',
       component: 'input',

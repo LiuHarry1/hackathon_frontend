@@ -19,7 +19,7 @@
     >
       <template #header>
         <a-button v-if="$has('role:add')" type="primary" @click="addRole">
-          <a-icon type="plus" />添加角色
+          <a-icon type="plus" />Add 角色
         </a-button>
       </template>
       <template #expandedRowRender="record">
@@ -101,7 +101,7 @@ export default {
     addRole() {
       let vnode;
       this.$drawer({
-        title: '添加角色',
+        title: 'Add 角色',
         content: h => (vnode = <EditRole />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -109,7 +109,7 @@ export default {
             this.search();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '添加失败');
+            this.$message.error(e.msg || 'Add 失败');
             throw e;
           });
         },

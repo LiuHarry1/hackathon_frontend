@@ -187,7 +187,7 @@
         this.$refs.registerDialog.open();
       },
       /**
-       * 打开找回密码弹窗
+       * 打开找回Password弹窗
        */
       openFindDialog(){
         this.$refs.findDialog.open();

@@ -51,7 +51,7 @@ export default {
      */
     matcher: {
       type: Function,
-      
+
       default: noop,
     },
     /**
@@ -62,7 +62,7 @@ export default {
       default: key => key,
     },
     /**
-     * 为校验失败项添加的默认类名，外部可根据这个类名去定义/修改组件样式
+     * 为校验失败项Add 的默认类名，外部可根据这个类名去定义/修改组件样式
      */
     errorClass: {
       type: String,

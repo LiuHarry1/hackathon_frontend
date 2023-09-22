@@ -13,7 +13,7 @@
     @ok="onOk"
   >
     <a-button type="link" @click="writeTemplateFile">
-      下载上传模板({{ type === "student" ? "学生" : "教师" }})
+      下载上传模板({{ type === "student" ? "Student" : "教师" }})
     </a-button>
     <a-upload
       accept=".xlsx,.xls"
@@ -74,10 +74,10 @@ export default {
       return new Map(
         [
           ['账号', this.primaryKey],
-          ['姓名', 'name'],
+          ['Name', 'name'],
         ].concat(
           this.type === 'student'
-            ? [['性别', 'sex'], ['年级', 'grade'], ['班级', 'class']]
+            ? [['Sex', 'sex'], ['Grade', 'grade'], ['Class', 'class']]
             : [['职称', 'rank']],
         ),
       );
@@ -186,18 +186,18 @@ export default {
       makeExcel(({
         student: {
           header: [...this.keyMap.keys()],
-          name: '学生上传模板.xlsx',
+          name: 'Student上传模板.xlsx',
           data: [
-            { 账号: '8002117259', 姓名: '张三', 性别: '男', 年级: '大一', 班级: '171班' },
-            { 账号: '8002118360', 姓名: '淑芬', 性别: '女', 年级: '大二', 班级: '172班' },
+            { 账号: '8002117259', Name: '张三',Sex: '男', Grade: '大一', Class: '171班' },
+            { 账号: '8002118360', Name: '淑芬',Sex: '女', Grade: '大二', Class: '172班' },
           ],
         },
         teacher: {
           header: [...this.keyMap.keys()],
           name: '教师上传模板.xlsx',
           data: [
-            { 工号: '8002117259', 姓名: '张三', 职称: '教授' },
-            { 工号: '8002118360', 姓名: '李四', 职称: '副教授' },
+            { 工号: '8002117259', Name: '张三', 职称: '教授' },
+            { 工号: '8002118360', Name: '李四', 职称: '副教授' },
           ],
         },
       })[this.type]);

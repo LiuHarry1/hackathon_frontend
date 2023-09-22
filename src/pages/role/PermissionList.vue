@@ -22,7 +22,7 @@
           type="primary"
           @click="addPermission"
         >
-          <a-icon type="plus" />添加权限
+          <a-icon type="plus" />Add 权限
         </a-button>
       </template>
     </AntTable>
@@ -88,7 +88,7 @@ export default {
     addPermission() {
       let vnode;
       this.$confirm({
-        title: '添加权限',
+        title: 'Add 权限',
         content: h => (vnode = <EditPermission />),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
@@ -96,7 +96,7 @@ export default {
             this.getData();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '添加失败');
+            this.$message.error(e.msg || 'Add 失败');
             throw e;
           });
         },

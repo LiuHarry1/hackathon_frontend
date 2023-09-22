@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Quiz Assignment</h1>
+    <h1>Module A</h1>
 
     <div class="top_layer">
       <div class="left">
@@ -17,7 +17,10 @@
         <div v-if="$has('ai:teacher')">
         <!-- Text input for quiz question and Generate Quiz button -->
         <input class='inputclass' type="text" v-model="quizQuestion" placeholder="Enter a quiz question" />
-        <button @click="generateQuiz">Generate Quiz</button>
+        <div>
+          <button @click="generateQuiz">Generate Quiz</button>
+        </div>
+
 
         <!-- Display the generated quiz -->
         <div v-if="generatedQuiz">
@@ -186,8 +189,9 @@ export default {
 <style>
 /* Style for the outer container */
 .inputclass{
-  width: 200px;
+  width: 80%;
   height: 100px;
+  margin-bottom: 10px;
 }
 .container {
   font-family: Arial, sans-serif;
@@ -227,6 +231,10 @@ p {
   font-size: 14px;
   color: #666;
 }
+.right {
+  width: 400px;
+
+}
 
 /* Style for the right side of the top layer */
 .right button {
@@ -236,6 +244,7 @@ p {
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 /* Style for the File Upload and Download section */

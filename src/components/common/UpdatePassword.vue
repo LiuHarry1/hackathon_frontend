@@ -72,16 +72,16 @@ function getRules() {
   return {
     password: {
       required: true,
-      message: '请输入密码！',
+      message: '请输入Password！',
     },
     newPass: {
       required: true,
       validator: (rule, value, callback) => {
         const oldPass = this.formData.password;
         if (!value) {
-          callback(new Error('请输入新密码！'));
+          callback(new Error('请输入新Password！'));
         } else if (value === oldPass) {
-          callback(new Error('新密码不能与原密码相同！'));
+          callback(new Error('新Password不能与原Password相同！'));
         } else {
           callback();
         }
@@ -91,9 +91,9 @@ function getRules() {
       required: true,
       validator: (rule, value, callback) => {
         if (!value) {
-          callback(new Error('请确认新密码！'));
+          callback(new Error('请确认新Password！'));
         } if (value && value !== this.formData.newPass) {
-          callback(new Error('两次密码不一致'));
+          callback(new Error('两次Password不一致'));
         } else {
           callback();
         }

@@ -21,7 +21,7 @@
       <template #header>
         <a-button-group>
           <a-button v-if="$has('user:add')" type="primary" @click="addUser">
-            添加教师
+            Add 教师
           </a-button>
           <a-button
             v-if="$has('user:delete')"
@@ -50,9 +50,9 @@
               <a-icon type="edit" />
             </a>
 
-            <!--重置密码-->
+            <!--重置Password-->
             <a-popconfirm
-              title="确认重置密码？"
+              title="确认重置Password？"
               ok-text="确认"
               cancel-text="取消"
               placement="left"
@@ -63,7 +63,7 @@
               </template>
               <a-tooltip placement="top">
                 <template #title>
-                  <span>重置密码</span>
+                  <span>重置Password</span>
                 </template>
                 <a><a-icon type="rollback" /></a>
               </a-tooltip>
@@ -106,7 +106,7 @@ import GrantRole from '@/components/common/GrantRole';
 
 const TEACHER_COLUMNS = [
   { title: '工号', dataIndex: 'tid' },
-  { title: '姓名', dataIndex: 'name' },
+  { title: 'Name', dataIndex: 'name' },
   { title: '职称', customRender: ({ rank }) => rankMap[rank] },
   { title: '描述', dataIndex: 'description', ellipsis: true },
   { title: '创建时间', dataIndex: 'create_time' },
@@ -128,7 +128,7 @@ function exportExcel(data) {
     header,
     keyMap: {
       tid: '工号',
-      name: '姓名',
+      name: 'Name',
       rank: ['职称', rank => rankMap[rank]],
       description: '描述',
       create_time: '创建时间',
@@ -223,16 +223,16 @@ export default {
       let vnode;
 
       this.$confirm({
-        title: '添加教师',
+        title: 'Add 教师',
         content: h => (vnode = h(EditTeacher)),
         onOk: async () => {
           const values = await vnode.componentInstance.validate();
           return this.$api.addUser('teacher', values).then(() => {
-            this.$message.success('添加成功');
+            this.$message.success('Add 成功');
             this.getData();
           }).catch(e => {
             console.error(e);
-            this.$message.error(e.msg || '添加失败');
+            this.$message.error(e.msg || 'Add 失败');
             throw e;
           });
         },
@@ -327,7 +327,7 @@ function createSearchOptions() {
       component: 'input',
     },
     {
-      label: '姓名',
+      label: 'Name',
       key: 'name',
       default: '',
       component: 'input',

@@ -63,7 +63,7 @@ function matchTopics(cm,lines){
         if (stop - start > 1){
           words.push(word);
 
-          //添加样式
+          //Add 样式
           let from = {
             line: lineNum,
             ch: start

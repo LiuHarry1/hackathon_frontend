@@ -1,28 +1,28 @@
 const columns = {
   student: [
     {
-      title: '学号',
+      title: 'Number',
       dataIndex: 'account',
       sort: (a, b) => a.account - b.account,
     },
     {
-      title: '密码',
+      title: 'Password',
       dataIndex: 'password',
     },
     {
-      title: '姓名',
+      title: 'Name',
       dataIndex: 'name',
     },
     {
-      title: '性别',
+      title: 'Sex',
       dataIndex: 'sex',
     },
     {
-      title: '年级',
+      title: 'Grade',
       dataIndex: 'grade',
     },
     {
-      title: '班级',
+      title: 'Class',
       dataIndex: 'classname',
     },
   ],
@@ -33,11 +33,11 @@ const columns = {
       sort: (a, b) => a.account - b.account,
     },
     {
-      title: '密码',
+      title: 'Password',
       dataIndex: 'password',
     },
     {
-      title: '姓名',
+      title: 'Name',
       dataIndex: 'name',
     },
     {
