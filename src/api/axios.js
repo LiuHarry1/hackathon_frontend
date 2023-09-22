@@ -1,6 +1,9 @@
 import { message } from 'ant-design-vue';
 import axios from 'axios';
 import store from '@/store';
+// import BASE_URL from 'config.js'
+
+const BASE_URL = 'https://vmg65etpjy.us-east-1.awsapprunner.com';
 
 const http = axios.create({
   baseURL: '/api',
@@ -11,6 +14,7 @@ http.interceptors.request.use(config => {
   if (!config.headers.authorization && store.state.token) {
     config.headers.authorization = store.state.token;
   }
+  console.log(config);
   return config;
 });
 

@@ -2,7 +2,7 @@
   <div>
     <div class="logo" @click="goHome">
       <a-avatar src="/logo.png" :size="40" />
-      <span>竞赛管理系统</span>
+      <span>Learnin Management System</span>
     </div>
     <a-menu
       theme="dark"
@@ -41,30 +41,30 @@ export default {
       openKeys: [],
       config: [
         {
-          title: '赛事管理',
+          title: 'Module',
           icon: 'appstore',
           key: 'race',
           children: [
-            { key: '/race', title: '赛事' },
-            { key: '/record', title: '参赛记录' },
+            { key: '/race', title: 'Modules' },
+            { key: '/record', title: 'My Modules' },
           ],
         },
         {
-          title: '用户管理',
+          title: 'User',
           icon: 'user',
           key: 'user',
           children: [
-            { key: '/student', title: '学生列表' },
-            { key: '/teacher', title: '教师列表' },
+            { key: '/student', title: 'Student' },
+            { key: '/teacher', title: 'Teacher' },
           ],
         },
         {
-          title: '权限管理',
+          title: 'Permission',
           icon: 'key',
           key: 'permission',
           children: [
-            { key: '/role_list', title: '角色列表' },
-            { key: '/permission_list', title: '权限列表' },
+            { key: '/role_list', title: 'Role' },
+            { key: '/permission_list', title: 'Permission' },
           ],
         },
       ],

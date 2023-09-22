@@ -11,7 +11,7 @@ export default {
   name: 'Login',
   components: { UserLogin },
   metaInfo: {
-    title: '登录',
+    title: 'Login',
   },
 };
 </script>

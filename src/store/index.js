@@ -11,8 +11,6 @@ const store = new Vuex.Store({
   plugins: debug ? [createLogger()] : [],
   state: {
     user: {
-      account: 'admin',
-      permissions: Array.from({ length: 28 }, (_, index) => index + 1),
     },
   },
   getters: {
@@ -25,6 +23,7 @@ const store = new Vuex.Store({
     initUser({ commit }) {
       return getUserData().then(data => {
         commit('setUserData', data.data);
+        console.log(data.data);
         return data.data;
       });
     },

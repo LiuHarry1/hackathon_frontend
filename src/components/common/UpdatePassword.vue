@@ -6,8 +6,8 @@
     :model="formData"
     :rules="rules"
   >
-    <a-form-model-item label="原密码" prop="password">
-      <a-input-password v-model="formData.password" placeholder="原密码">
+    <a-form-model-item label="Original" prop="password" >
+      <a-input-password v-model="formData.password" placeholder="Original Password">
         <a-icon
           slot="prefix"
           type="lock"
@@ -15,8 +15,8 @@
         />
       </a-input-password>
     </a-form-model-item>
-    <a-form-model-item label="新密码" prop="newPass">
-      <a-input-password v-model="formData.newPass" placeholder="新密码">
+    <a-form-model-item label="New" prop="newPass">
+      <a-input-password v-model="formData.newPass" placeholder="New Password">
         <a-icon
           slot="prefix"
           type="lock"
@@ -24,8 +24,8 @@
         />
       </a-input-password>
     </a-form-model-item>
-    <a-form-model-item label="再次输入" prop="reNewPass">
-      <a-input-password v-model="formData.reNewPass" placeholder="再次输入">
+    <a-form-model-item label="reNew" prop="reNewPass">
+      <a-input-password v-model="formData.reNewPass" placeholder="Input again">
         <a-icon
           slot="prefix"
           type="lock"

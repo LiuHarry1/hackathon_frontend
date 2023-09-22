@@ -4,11 +4,11 @@
     :wrapper-col="wrapperCol"
     :form="form"
   >
-    <a-form-item label="工号">
+    <a-form-item label="ID">
       <a-input
         v-decorator="decorator.tid"
         :disabled="isEdit"
-        placeholder="职工号"
+        placeholder="ID"
       >
         <a-icon
           slot="prefix"
@@ -17,11 +17,11 @@
         />
       </a-input>
     </a-form-item>
-    <a-form-item v-if="!isEdit" label="密码">
+    <a-form-item v-if="!isEdit" label="password">
       <a-input
         ref="password"
         v-decorator="decorator.password"
-        placeholder="密码"
+        placeholder="Password"
       >
         <a-icon
           slot="prefix"
@@ -30,23 +30,23 @@
         />
       </a-input>
     </a-form-item>
-    <a-form-item label="姓名">
+    <a-form-item label="Name">
       <a-input
         v-decorator="decorator.name"
-        placeholder="姓名"
+        placeholder="Name"
       />
     </a-form-item>
-    <a-form-item label="职称">
+    <a-form-item label="Rank">
       <a-select
         v-decorator="decorator.rank"
-        placeholder="请选择职称"
+        placeholder="Select"
         :options="ranks"
       />
     </a-form-item>
-    <a-form-item label="描述">
+    <a-form-item label="Desc">
       <a-textarea
         v-decorator="decorator.description"
-        placeholder="描述"
+        placeholder="Desc"
       />
     </a-form-item>
   </a-form>

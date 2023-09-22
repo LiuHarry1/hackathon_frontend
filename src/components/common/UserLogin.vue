@@ -29,7 +29,7 @@
           />
         </a-input-password>
       </a-form-model-item>
-      <a-form-model-item ref="code" prop="code">
+      <!-- <a-form-model-item ref="code" prop="code">
         <div class="code-input">
           <a-input v-model="formData.code" placeholder="验证码">
             <a-icon
@@ -40,7 +40,7 @@
           </a-input>
           <div class="code" v-html="svg" @click="getCode" />
         </div>
-      </a-form-model-item>
+      </a-form-model-item> -->
       <a-form-model-item prop="identity">
         <a-radio-group v-model="formData.identity" class="identity">
           <a-radio value="student">Student</a-radio>
@@ -80,13 +80,11 @@ export default {
       formData: {
         account: '',
         password: '',
-        code: '',
         identity: 'student',
       },
       rules: {
         account: { required: true, message: '请输入学号/工号！' },
         password: { required: true, message: '请输入密码！' },
-        code: { required: true, message: '请输入验证码！' },
       },
     };
   },
@@ -102,40 +100,40 @@ export default {
       //   this.$message.error(e.msg || '验证码获取失败');
       // });
     },
-    onSubmit(e) {
-      e.preventDefault();
-      this.loading = true;
-      // await this.$refs.form.validate();
-      // await this.$api.login(this.formData);
-      Cookie.set('uid', 'testuser');
-      this.$router.replace({ path: '/' });
-      this.$message.success(`${timeFix()}，欢迎回来`);
-    },
-    // #region onsubmit
-    // async onSubmit(e) {
+    // onSubmit(e) {
     //   e.preventDefault();
-    //   try {
-    //     this.loading = true;
-    //     await this.$refs.form.validate();
-    //     await this.$api.login(this.formData);
-    //     await this.$router.replace({ path: '/' }).catch(e => e);
-    //     this.$message.success(`${timeFix()}，欢迎回来`);
-    //   } catch (e) {
-    //     if (!e) return; // 表单校验
-    //     console.error(e);
-    //     this.getCode();
-    //     // 设置校验状态
-    //     if (e.code && e.msg) {
-    //       const field = ({ 1: 'account', 2: 'password', 3: 'code' })[e.code];
-    //       Object.assign(this.$refs[field], {
-    //         validateMessage: e.msg,
-    //         validateState: 'error',
-    //       });
-    //     }
-    //   } finally {
-    //     this.loading = false;
-    //   }
+    //   this.loading = true;
+    //   // await this.$refs.form.validate();
+    //   // await this.$api.login(this.formData);
+    //   Cookie.set('uid', 'testuser');
+    //   this.$router.replace({ path: '/' });
+    //   this.$message.success(`${timeFix()}，欢迎回来`);
     // },
+    // #region onsubmit
+    async onSubmit(e) {
+      e.preventDefault();
+      try {
+        this.loading = true;
+        await this.$refs.form.validate();
+        await this.$api.login(this.formData);
+        await this.$router.replace({ path: '/' }).catch(e => e);
+        this.$message.success(`${timeFix()}，欢迎回来`);
+      } catch (e) {
+        if (!e) return; // 表单校验
+        console.error(e);
+        // this.getCode();
+        // 设置校验状态
+        if (e.code && e.msg) {
+          const field = ({ 1: 'account', 2: 'password', 3: 'code' })[e.code];
+          Object.assign(this.$refs[field], {
+            validateMessage: e.msg,
+            validateState: 'error',
+          });
+        }
+      } finally {
+        this.loading = false;
+      }
+    },
     // #endregion
     goToRegister(){
       console.log('register');

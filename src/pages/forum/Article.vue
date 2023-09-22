@@ -12,6 +12,8 @@
               <div class="title">{{article.articleTitle}}</div>
               <div class="info">
                   <span>
+                    {{ article.userName }}
+                    <span> · </span>
                     <!-- <el-link class="author-name my-el-link" style="vertical-align: unset;" @click="goUserPage">{{article.userDTO.userNick}}</el-link> -->
                     <!-- <span> · </span> -->
                     <span :title="article.articleAddTime">{{$utils.quickTimeago(article.articleAddTime)}}</span>
@@ -103,9 +105,8 @@
           articleContent: "",
           articleAddTime: null,
           articleUpdateTime: "",
-          articleStatus: null,
+          articleStatus: 0,
           articleComments:[],
-          articleCommentCount: 0,
           userDTO: {userNick: "",userFace: "",userId: null},
           articleTags: [],
           articleTopics: []
@@ -165,7 +166,7 @@
         // return this.$store.dispatch('Article/addArticleView',this.articleId).then(res=>{
         // });
       },
-      getArticle() {
+      async getArticle() {
         // return this.$store.dispatch('Article/getArticle',this.articleId).then(res=>{
         //   this.article = res.data;
         //   this.$nextTick(()=>{
@@ -177,24 +178,13 @@
         //     path: "/"
         //   });
         // })
-        this.article ={
-          articleId: 0,
-          articleTitle: 'test0',
-          articleContent: "test-----------------",
-          articleAddTime: '2023/09/19',
-          articleUpdateTime: "2023/09/20",
-          articleStatus: null,
-          articleComments:
-          [
-            {articleCommentId:0,articleComment:'comment',articleCommentTime:"2023/09/20"},
-            {articleCommentId:1,articleComment:'comment',articleCommentTime:"2023/09/20"},
-        ],
-          articleCommentCount: 10,
-          userDTO: {userNick: "",userFace: "",userId: null},
-          articleTags: ['tag1','tag2'],
-          articleTopics: ['topic1','topic2']
-        }
+        await this.$api.getArticle({article_id:this.articleId}).then(data=>{
+            this.article =data.data;
+            this.article.articleAddTime ='2023/09/20';
+            this.article.articleTags =['Issue'];
+          });
       },
+
       goEditArticle(){
         this.$router.push({
           path: "/writeArticle/" + this.article.articleId
@@ -242,8 +232,12 @@
           // parentArticleCommentId: commentId,
           articleComment: content
         }
-        this.$message.success("回复成功");
+       
         //TODO POST 上传
+        this.$api.addComment(params).then(()=>{
+          this.$message.success("回复成功");
+          this.getArticle();
+        })
 
         // this.$store.dispatch("Comment/addArticleComment",params).then(res=>{
         //   this.$refs.articleCommentAdd.clearContent();

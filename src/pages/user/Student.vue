@@ -143,7 +143,7 @@ function exportExcel(data) {
 export default {
   name: 'Student',
   metaInfo: {
-    title: '学生管理',
+    title: 'Student',
   },
   components: {
     UserImport,

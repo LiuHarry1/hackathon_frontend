@@ -1,22 +1,22 @@
 export const grades = [
-  { label: '大一', value: 1 },
-  { label: '大二', value: 2 },
-  { label: '大三', value: 3 },
-  { label: '大四', value: 4 },
+  { label: 'first grade', value: 1 },
+  { label: 'seconde grade', value: 2 },
+  { label: 'third grade', value: 3 },
+  { label: 'fourth grade', value: 4 },
 ];
 export const gradeMap = map(grades);
 
 export const ranks = [
-  { label: '其他', value: 0 },
-  { label: '教授', value: 1 },
-  { label: '副教授', value: 2 },
-  { label: '讲师', value: 3 },
+  { label: 'other', value: 0 },
+  { label: 'professor', value: 1 },
+  { label: 'associate professor', value: 2 },
+  { label: 'lecturer', value: 3 },
 ];
 export const rankMap = map(ranks);
 
 export const sexes = [
-  { label: '男', value: 1 },
-  { label: '女', value: 0 },
+  { label: 'male', value: 1 },
+  { label: 'female', value: 0 },
 ];
 export const sexMap = map(sexes);
 

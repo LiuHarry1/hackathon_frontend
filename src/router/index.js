@@ -32,12 +32,12 @@ export const routes = [
             component: () => import('@/pages/race/Race'),
             meta: { title: 'Module List', auth: 'race:query' },
           },
-          {
-            path: '/race/record',
-            name: 'Record',
-            component: () => import('@/pages/race/Record'),
-            meta: { title: 'My Modules old', auth: 'record:query' },
-          },
+          // {
+          //   path: '/race/record',
+          //   name: 'Record',
+          //   component: () => import('@/pages/race/Record'),
+          //   meta: { title: 'My Modules old', auth: 'record:query' },
+          // },
           {
             path: '/race/mymodules',
             name: 'mymodules',

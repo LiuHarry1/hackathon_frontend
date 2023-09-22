@@ -92,9 +92,9 @@ export default {
         identity: 'student',
       },
       rules: {
-        account: { required: true, message: '请输入学号/工号！' },
-        password: { required: true, message: '请输入密码！' },
-        code: { required: true, message: '请输入验证码！' },
+        account: { required: true, message: 'Input Number' },
+        password: { required: true, message: 'Input Password' },
+        email: { required: true, message: 'Input Email' },
       },
     };
   },

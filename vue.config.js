@@ -13,12 +13,12 @@ module.exports = {
     }
   },
   devServer: {
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:3000',
-    //     changeOrigin: true,
-    //   },
-    // },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
     // allowedHosts: "all",
     compress: true,
     disableHostCheck: true,   // That solved it

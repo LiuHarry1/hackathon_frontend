@@ -19,7 +19,7 @@ const vm = new Vue({
   router,
   store,
   render: h => (
-    <a-config-provider locale={zhCn}>
+    <a-config-provider>
       <App/>
     </a-config-provider>
   ),

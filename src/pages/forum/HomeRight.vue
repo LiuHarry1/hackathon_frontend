@@ -29,9 +29,6 @@
     data() {
       return {
         topics: [
-          {topicName: 'hot1',articleNum:10,topicDesc:'hot topic'},
-          {topicName: 'hot2',articleNum:10,topicDesc:'hot topic'},
-          {topicName: 'hot3',articleNum:10,topicDesc:'hot topic'}
         ]
       }
     },
@@ -44,7 +41,11 @@
           path: "/writeArticle"
         })
       },
-      getHotTopics(){
+      async getHotTopics(){
+        await this.$api.getHotTopic().then(data=>{
+            this.topics =data.data;
+          });
+          
         // this.$store.dispatch('Topic/getHotTopics').then(res=>{
         //   this.topics = res.data.records;
         // })

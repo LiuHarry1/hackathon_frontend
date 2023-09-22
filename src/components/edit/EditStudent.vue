@@ -4,11 +4,11 @@
     :wrapper-col="wrapperCol"
     :form="form"
   >
-    <a-form-item label="学号">
+    <a-form-item label="ID">
       <a-input
         v-decorator="decorator.sid"
         :disabled="isEdit"
-        placeholder="学号"
+        placeholder="ID"
         allowClear
       >
         <a-icon
@@ -18,11 +18,11 @@
         />
       </a-input>
     </a-form-item>
-    <a-form-item v-if="!isEdit" label="密码">
+    <a-form-item v-if="!isEdit" label="Password">
       <a-input
         ref="password"
         v-decorator="decorator.password"
-        placeholder="密码"
+        placeholder="Password"
         allowClear
       >
         <a-icon
@@ -32,29 +32,29 @@
         />
       </a-input>
     </a-form-item>
-    <a-form-item label="姓名">
+    <a-form-item label="Name">
       <a-input
         v-decorator="decorator.name"
-        placeholder="姓名"
+        placeholder="Name"
         allowClear
       />
     </a-form-item>
-    <a-form-item label="年级">
+    <a-form-item label="grade">
       <a-select
         v-decorator="decorator.grade"
         :options="grades"
         allowClear
-        placeholder="年级"
+        placeholder="grade"
       />
     </a-form-item>
-    <a-form-item label="班级">
+    <a-form-item label="Class">
       <a-input
         v-decorator="decorator.class"
-        placeholder="班级"
+        placeholder="Class"
         allowClear
       />
     </a-form-item>
-    <a-form-item label="性别">
+    <a-form-item label="Sex">
       <a-radio-group v-decorator="decorator.sex" :options="sexes" />
     </a-form-item>
   </a-form>

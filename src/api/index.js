@@ -46,3 +46,17 @@ export const addRole = data => axios.post('/role/add', data);
 export const updateRole = data => axios.post('/role/update', data);
 export const deleteRole = data => axios.delete('/role/delete', { data });
 export const grantRole = data => axios.post('/role/grant', data);
+
+/**
+ * forum
+ */
+export const getArticleList = () => axios.get('/article/list');
+export const getArticle = params => axios.get('/article', { params });
+export const getHotTopic = () => axios.get('/hottpoics');
+export const addComment = (data) => axios.post('/article', data);
+
+/**
+ * ai
+ */
+export const getanswer = (query) => axios.post('/ai_service/faq',query);
+export const getai = () => axios.get('/aiservice');

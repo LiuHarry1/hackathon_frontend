@@ -8,8 +8,32 @@
             <article-card v-for="(item,index) in datas" :article="item" easy :key="index"></article-card>
             <page ref="page" @change="loadList"></page>
           </el-card>
+         
         </template>
       </home-layout>
+      <div class="chatbot" @click="dialogVisible=true">
+      </div>
+      <el-dialog
+        title="Chat Bot"
+        :visible.sync="dialogVisible"
+        width="30%"
+        :close-on-click-modal="false" 
+        :close-on-press-escape="false" 
+        :modal='false'
+        >
+        <div style="height:40vh">
+        <el-scrollbar style="height:40vh" :horizontal="false">
+          <div v-for="(item,index) in msglist" :key="index">
+            <ChatMsg :msg="item"></ChatMsg>
+          </div>
+        </el-scrollbar>
+      </div>
+        <span slot="footer" class="dialog-footer">
+          <el-input class="diainput" v-model="chat"></el-input>
+          <el-button @click="closeChat">Cancel</el-button>
+          <el-button type="primary" @click="sendMsg">Confirm</el-button>
+        </span>
+      </el-dialog>
     </div>
   </template>
   
@@ -21,9 +45,16 @@
     import HomeLayout from "./components/HomeLayout";
     import Page from "../../components/forum/Page";
     import Hitokoto from "../../components/forum/Hitokoto";
+    import ChatMsg from "../../components/forum/ChatMsg.vue"
+
+import ChatMsgVue from '@/components/forum/ChatMsg.vue';
     export default {
       name: "Home",
-      components: {Hitokoto, Page, HomeLayout, HomeRight, TabComponent, ArticleCard},
+      metaInfo: {
+        title: 'Forum',
+      },
+      components: {ChatMsg
+        ,Hitokoto, Page, HomeLayout, HomeRight, TabComponent, ArticleCard},
       data() {
         return {
           images: [
@@ -39,32 +70,10 @@
             {label: "Hot",value: "hot"}
           ],
   
-          datas: [{
-            articleId:0,
-            articleTitle:'test',
-            articleContent:'test content',
-            articleTopics:['Issue','Machine Learning'],
-            articleAddTime:'2023/09/20',
-            articleView:20,
-            articleCommentCount:10,
-            userDTO:{
-                userFace:'userface',
-                userNick:'xx'
-            }
-          },
-          {
-            articleId:1,
-            articleTitle:'test1',
-            articleContent:'test1 content',
-            articleTopics:['Issue','Machine Learning'],
-            articleAddTime:'2023/09/20',
-            articleView:20,
-            articleCommentCount:10,
-            userDTO:{
-                userFace:'userface',
-                userNick:'xx'
-            }
-          }],
+          datas: [],
+          dialogVisible:false,
+          msglist:[],
+          chat:''
         }
       },
       watch:{
@@ -85,11 +94,15 @@
           if (this.activeTab === "new"){
             this.list();
           }else if (this.activeTab === "hot"){
-            this.hotList();
+            this.list();
           }
         },
-        list(){
-          let params = this.$refs.page.getPage();
+        async list(){
+          // let params = this.$refs.page.getPage();
+
+          await this.$api.getArticleList().then(data=>{
+            this.datas =data.data;
+          });
         //   GET 请求文章列表
         //   this.$store.dispatch('Article/getArticles',params).then(res=>{
         //     this.datas = res.data.records;
@@ -102,25 +115,68 @@
         //     this.datas = res.data.records;
         //     this.$refs.page.setPage(res.data);
         //   })
+        },
+        async sendMsg(){
+          let temp ={
+            user:'user',
+            msg:this.chat
+          };
+          this.msglist.push(temp);
+          //TODO api
+          const requestData = {
+          query: this.chat, // 你的查询字符串
+          };
+
+          try{
+            await this.$api.getanswer(
+            requestData
+          ).then(data=>{
+            this.msglist.push({user:'bot',msg:data.answer});
+          })
+          }catch (error) {
+            console.error('请求出错：', error);
+          };
+
+          this.chat ='';
+        },
+        closeChat(){
+          this.msglist =[];
+          this.chat ='';
+          this.dialogVisible =false;
         }
+      
       },
     }
   </script>
   
   <style lang="stylus" rel="stylesheet/stylus">
   .home {
-    .article-list-card{
-      .el-card__header{
-        padding: 0;
-      }
-      .el-card__body{
-        padding: 0;
-      }
-      .article-card{
-        padding:  10px;
-      }
+      .article-list-card{
+          .el-card__header{
+            padding: 0;
+          }
+          .el-card__body{
+            padding: 0;
+          }
+          .article-card{
+            padding:  10px;
+          }
     }
-  
+      .chatbot{
+        position: fixed;
+        right: 20px;
+        bottom: 100px;
+        width: 200px;
+        height: 160px;
+        background-image: url('../../../public/bot.png');
+      }
+      .content-box{
+        line-height: 30px;
+      }
+      .diainput{
+        margin-bottom: 20px;
+      }
+     
   }
   /*
   .layout.route-home {

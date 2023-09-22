@@ -50,7 +50,7 @@ import EditRole from '@/components/edit/EditRole';
 export default {
   name: 'PermissionList',
   metaInfo: {
-    title: '角色管理',
+    title: 'Role',
   },
   data() {
     return {
