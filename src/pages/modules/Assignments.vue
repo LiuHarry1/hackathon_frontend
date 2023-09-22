@@ -102,7 +102,7 @@ export default {
       // Use Axios or similar library to make the API call
 
       axios
-        .get(`${BASE_URL}/comments`)
+        .get(`${BASE_URL}/ai_service/auto_review`)
         // .get('https://vmg65etpjy.us-east-1.awsapprunner.com/comments')
         .then((response) => {
           this.comments = response.data.comments;
@@ -143,7 +143,7 @@ export default {
     generateQuiz() {
       // Send a POST request to the Flask backend to generate the quiz
       axios
-        .post(`${BASE_URL}/generate_quiz`, { quizQuestion: this.quizQuestion })
+        .post(`${BASE_URL}/ai_service/auto_generate`, { quizQuestion: this.quizQuestion })
         .then((response) => {
           // Handle the response and set the generatedQuiz property
           this.generatedQuiz = response.data.quiz;
